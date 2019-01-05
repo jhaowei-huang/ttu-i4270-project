@@ -1,5 +1,8 @@
 // 變數
 @import 'variables';
-
 // 自定義的Bootstrap樣式表
-@import 'bootstrap.min.css';
+@import 'bootstrap/bootstrap.min.css';
+
+body {
+    background: #e2e3e5;
+}
