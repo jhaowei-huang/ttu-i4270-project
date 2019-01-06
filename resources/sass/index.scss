@@ -1,0 +1,52 @@
+@import 'variables';
+
+.row-album {
+    @for $i from 1 through 4 {
+        .img-#{$i} {
+            background-image: url("../images/TIFE2018-0#{$i}.jpg");
+            background-repeat: no-repeat;
+            background-size: 50vmin 50vmin;
+            width: 50vmin;
+            height: 50vmin;
+            -webkit-transform: translate(15px, 0px);
+            -moz-transform: translate(15px, 0px);
+            -ms-transform: translate(15px, 0px);
+            -o-transform: translate(15px, 0px);
+            transform: translate(15px, 0px);
+
+            @include screen(mobile) {
+                background-size: 100vmin 95vmin;
+                width: 100vmin;
+                height: 100vmin;
+                -webkit-transform: translate(0, 0);
+                -moz-transform: translate(0, 0);
+                -ms-transform: translate(0, 0);
+                -o-transform: translate(0, 0);
+                transform: translate(0, 0);
+            }
+
+            @include screen(ipad) {
+                background-size: 23vmin 25vmin;
+                width: 25vmin;
+                height: 25vmin;
+                -webkit-transform: translate(0, 0);
+                -moz-transform: translate(0, 0);
+                -ms-transform: translate(0, 0);
+                -o-transform: translate(0, 0);
+                transform: translate(0, 0);
+            }
+        }
+    }
+}
+
+.text-truncate {
+    width: 30%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    @include screen(mobile) {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        width: 45%;
+    }
+}

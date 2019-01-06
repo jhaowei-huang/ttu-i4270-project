@@ -13,6 +13,13 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('pages.index');
+Route::group(['middleware' => ['web']], function () {
+    // 靜態網頁
+    Route::get('/', 'PageController@index')->name('index');
+    Route::get('/agenda0926', 'PageController@agenda0926')->name('agenda0926');
+    Route::get('/agenda0927', 'PageController@agenda0927')->name('agenda0927');
+    Route::get('/map', 'PageController@map')->name('map');
+    Route::get('/speaker', 'PageController@speaker')->name('speaker');
+    Route::get('/registration', 'PageController@registration')->name('registration');
+    Route::get('/contact', 'PageController@contact')->name('contact');
 });

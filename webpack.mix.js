@@ -12,4 +12,14 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+    .js('resources/js/agenda.js', 'public/js')
+    .js('resources/js/map.js', 'public/js')
+    .js('resources/js/speaker.js', 'public/js')
+    .js('resources/js/function.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/index.scss', 'public/css')
+    .sass('resources/sass/agenda.scss', 'public/css')
+    .sass('resources/sass/map.scss', 'public/css')
+    .sass('resources/sass/speaker.scss', 'public/css')
+    .sass('resources/sass/contact.scss', 'public/css')
+    .sass('resources/sass/function.scss', 'public/css');

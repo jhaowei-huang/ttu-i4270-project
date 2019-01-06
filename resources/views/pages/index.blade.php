@@ -5,19 +5,23 @@
 @endpush
 
 @section('content')
-    <div class="bg mt-5">
-        <div class="bg-cover">
-            <div class="content">
-                <div class="col-12 mt-5 pt-5 text-center">
-                    <h2>關於 2018 TIFE</h2>
-                    <p>紡織科技國際論壇暨研發成果展(Textile International Forum and Exhibition，簡稱TIFE)</p>
-                    <p>是由經濟部技術處於民國90年委託相關法人研究機構共同承辦</p>
-                    <p>除了展示紡織科技重要研發成果外，亦舉辦論壇及邀請國內外知名企業經營者、專家及學者</p>
-                    <p>2018年TIFE活動於9月26日(三)至27日(四)假台大醫院國際會議中心舉辦</p>
-                    <p>由紡織產業綜合研究所執行，大會主題定調為「智慧機能與領航創新」</p>
-                    <p>期望能透過活動之舉辦，帶動國內紡織產業能更具創新及永續發展之能力</p>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5 pt-4 text-center">
+                <h3>關於 2018 TIFE</h3>
+                <p class="lead">紡織科技國際論壇暨研發成果展(Textile International Forum and Exhibition，簡稱TIFE)</p>
+                <p class="lead">是由經濟部技術處於民國90年委託相關法人研究機構共同承辦</p>
+                <p class="lead">除了展示紡織科技重要研發成果外，亦舉辦論壇及邀請國內外知名企業經營者、專家及學者</p>
+                <p class="lead">2018年TIFE活動於9月26日(三)至27日(四)假台大醫院國際會議中心舉辦</p>
+                <p class="lead">由紡織產業綜合研究所執行，大會主題定調為「智慧機能與領航創新」</p>
+                <p class="lead">期望能透過活動之舉辦，帶動國內紡織產業能更具創新及永續發展之能力</p>
             </div>
+        </div>
+        <div class="row row-album justify-content-center mt-5">
+            <div class="col-12 col-md-3 img-fluid mx-auto img-1"></div>
+            <div class="col-12 col-md-3 img-fluid mx-auto img-2"></div>
+            <div class="col-12 col-md-3 img-fluid mx-auto img-3"></div>
+            <div class="col-12 col-md-3 img-fluid mx-auto img-4"></div>
         </div>
     </div>
 
@@ -48,7 +52,7 @@
         </div>
 
         <div class="col-md-9 col-12">
-            <h2><a href="https://www.ttri.org.tw/" target="_blank">執行：<br>紡織產業綜合研究所</a></h2><br>
+            <h2><a href="https://www.ttri.org.tw/" target="_blank">執行：紡織產業綜合研究所</a></h2><br>
             <p class="lead">紡織產業綜合研究所，溯始於民國四十八年十二月的「台灣紡織品試驗中心」</p>
             <p class="lead">早期以執行我國紡織品之外銷檢驗及維護產品品質為主</p>
             <p class="lead">民國六十年六月起更名為「中國紡織工業研究中心」，期間配合紡織產業的快速發展需求，任務由紡織相關廠商品管 / 分等 / 追查轉型為科技研發</p>
@@ -70,30 +74,38 @@
             <h2 class="text-center">支持單位</h2>
         </div>
     </div>
-    <div class="flex-row ml-md-5 mr-md-5 ml-5 mr-5" id="support">
-        <a class="truncate btn btn-lg btn-outline-primary mb-3" href="https://www.centi.pt/" target="_blank">Center for
+    <div class="row mx-2 justify-content-around" id="support">
+        <a class="btn btn-sm btn-outline-primary mb-3 text-truncate" href="https://www.centi.pt/" target="_blank">Center
+            for
             Nanotechnology and Smart
             Materials</a>
-        <a class="btn btn-lg btn-outline-danger mb-3" href="https://www.circle-economy.com/" target="_blank">Circulr
+        <a class="btn btn-sm btn-outline-danger mb-3 text-truncate" href="https://www.circle-economy.com/"
+           target="_blank">Circulr
             Economy</a>
-        <a class="btn btn-lg btn-outline-success mb-3" href="http://www.deakin.edu.au/" target="_blank">Deakin
+        <a class="btn btn-sm btn-outline-success mb-3 text-truncate" href="http://www.deakin.edu.au/" target="_blank">Deakin
             University</a>
-        <a class="btn btn-lg btn-outline-secondary mb-3" href="https://icebug.com/" target="_blank">Ice bug</a>
-        <a class="btn btn-lg btn-outline-dark mb-3" href="https://www.ioclothes.com/" target="_blank">IoClothes</a>
-        <a class="btn btn-lg btn-outline-danger mb-3" href="http://www.ipc.org/" target="_blank">IPC-Association
+        <a class="btn btn-sm btn-outline-secondary mb-3 text-truncate" href="https://icebug.com/" target="_blank">Ice
+            bug</a>
+        <a class="btn btn-sm btn-outline-dark mb-3 text-truncate" href="https://www.ioclothes.com/" target="_blank">IoClothes</a>
+        <a class="btn btn-sm btn-outline-danger mb-3 text-truncate" href="http://www.ipc.org/" target="_blank">IPC-Association
             Connecting Electronics
             Industries</a>
-        <a class="btn btn-lg btn-outline-primary mb-3" href="https://www.psu.edu/" target="_blank">Pennsylvania State
+        <a class="btn btn-sm btn-outline-primary mb-3 text-truncate" href="https://www.psu.edu/" target="_blank">Pennsylvania
+            State
             University</a>
-        <a class="btn btn-lg btn-outline-primary mb-3" href="https://www.scandinavianoutdoorgroup.com/" target="_blank">Scandinavian
+        <a class="btn btn-sm btn-outline-primary mb-3 text-truncate" href="https://www.scandinavianoutdoorgroup.com/"
+           target="_blank">Scandinavian
             Outdoor
             Group</a>
-        <a class="btn btn-lg btn-outline-secondary mb-3" href="https://apparelcoalition.org/" target="_blank">Sustainable
+        <a class="btn btn-sm btn-outline-secondary mb-3 text-truncate" href="https://apparelcoalition.org/"
+           target="_blank">Sustainable
             Apparel Coalition</a>
-        <a class="btn btn-lg btn-outline-dark mb-3" href="http://www.textile-testing.com/" target="_blank">Textile
+        <a class="btn btn-sm btn-outline-dark mb-3 text-truncate" href="http://www.textile-testing.com/"
+           target="_blank">Textile
             Testing and Innovation,
             LLE</a>
-        <a class="btn btn-lg btn-outline-success mb-3" href="https://www.vttresearch.com/" target="_blank">VTT Technical
+        <a class="btn btn-sm btn-outline-success mb-3 text-truncate" href="https://www.vttresearch.com/"
+           target="_blank">VTT Technical
             Research Center of
             Finland Ltd.</a>
     </div>

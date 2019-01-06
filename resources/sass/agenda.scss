@@ -1,0 +1,66 @@
+@import 'variables';
+
+ul.timeline {
+    cursor: default;
+    list-style-type: none;
+    position: relative;
+
+    li.row {
+        margin: 20px 0;
+        padding-left: 20px;
+
+        div.block {
+            p {
+                font-size: $font-size-base;
+            }
+
+            h5 {
+                color: $blue;
+
+                i.fas {
+                    color: $pink;
+                    font-size: 2.5rem;
+                    position: absolute;
+                    transform: translate(-2.675rem, -0.75rem);
+                    -moz-transform: translate(-2.675rem, -0.75rem);
+                    -ms-transform: translate(-2.675rem, -0.75rem);
+                    -o-transform: translate(-2.675rem, -0.75rem);
+                    -webkit-transform: translate(-2.675rem, -0.75rem);
+                    z-index: 100;
+                }
+            }
+        }
+    }
+
+    @include screen(mobile) {
+        list-style-type: none;
+        position: relative;
+
+        li.row {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+    }
+}
+
+ul.timeline:before {
+    background: darken(saturate(adjust-hue($body-bg, -7deg), 10), 4);
+    content: "";
+    display: inline-block;
+    height: 100%;
+    left: 1.75rem;
+    position: absolute;
+    top: 0.5rem;
+    width: 3px;
+    z-index: -1;
+
+    @include screen(mobile) {
+        left: 29px;
+        width: 2px;
+    }
+}
+
+.topic_number {
+    color: $pink;
+    margin: auto;
+}

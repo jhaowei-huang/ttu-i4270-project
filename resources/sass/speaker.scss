@@ -1,0 +1,55 @@
+@import 'variables';
+
+div.row div div.card {
+    @for $i from 1 through 11 {
+        img.card-img.img#{$i} {
+            @if ($i < 10) {
+                content: url('../images/speaker-0#{$i}.jpg');
+            } @else {
+                content: url('../images/speaker-#{$i}.jpg');
+            }
+
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            width: 60%;
+            height: 60%;
+            margin-top: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    div.card-body {
+        p.card-name, p.card-job {
+            text-align: center;
+            width: auto;
+            line-height: $line-height-base;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        div div.btn-group {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+#speakerModalCenterAvatar {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 60%;
+    height: 60%;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#speakerModalCenterText {
+    font-size: $font-size-small;
+
+    @include screen(mobile) {
+        font-size: $font-size-large;
+    }
+}

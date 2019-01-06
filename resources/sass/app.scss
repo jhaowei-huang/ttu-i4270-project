@@ -1,3 +1,12 @@
+// typography
+$fa-font-path: "../webfonts";
+@import "fontawesome/fontawesome";
+@import "fontawesome/solid";
+@import "fontawesome/brands";
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC|Roboto+Slab');
+$font-family-sans-serif: 'Roboto Slab', 'Noto Sans TC', sans-serif;
+
 // 變數
 @import 'variables';
 // 自定義的Bootstrap樣式表
@@ -5,4 +14,63 @@
 
 body {
     background: #e2e3e5;
+}
+
+:not(i) {
+    font-family: $font-family-sans-serif !important;
+}
+
+.nav-item {
+    cursor: pointer;
+
+    #navDropdownMenuLink {
+        color: $green;
+    }
+}
+
+.dropdown-menu {
+    background-color: $navbar-color;
+    color: #ffffff;
+    cursor: pointer;
+    left: auto;
+    position: center;
+    right: auto;
+    text-align: center;
+    top: 50px;
+
+    @include screen(mobile) {
+        width: 100%;
+    }
+}
+
+.dropdown-menu-right {
+    position: absolute;
+    right: 0;
+}
+
+.dropdown-item {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    width: 100%;
+
+    .item span {
+        text-align: center;
+        margin-top: -0.2rem;
+        margin-left: 0.2rem;
+    }
+
+    .item i {
+        margin: 0 0.5rem -2rem 0.5rem;
+    }
+}
+
+footer {
+    div div a {
+        i {
+            margin-right: 0.5rem;
+            color: $magenta;
+        }
+    }
 }

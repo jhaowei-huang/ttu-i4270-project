@@ -1,0 +1,168 @@
+div.row div.function1 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  background: transparent;
+  color: #1d68a7;
+  cursor: pointer;
+}
+
+div.row div.function1:hover {
+  color: white;
+  background-color: #1d68a7;
+}
+
+div.row div.function1 i {
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  margin-right: 0.5rem;
+}
+
+div.row div.function1 span {
+  font-size: 1.1rem;
+}
+
+div.row div.function2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  background: transparent;
+  color: #2d995b;
+  cursor: pointer;
+}
+
+div.row div.function2:hover {
+  color: white;
+  background-color: #2d995b;
+}
+
+div.row div.function2 i {
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  margin-right: 0.5rem;
+}
+
+div.row div.function2 span {
+  font-size: 1.1rem;
+}
+
+div.row div.function3 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  background: transparent;
+  color: #e3342f;
+  cursor: pointer;
+}
+
+div.row div.function3:hover {
+  color: white;
+  background-color: #e3342f;
+}
+
+div.row div.function3 i {
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  margin-right: 0.5rem;
+}
+
+div.row div.function3 span {
+  font-size: 1.1rem;
+}
+
+div.row div.function4 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  background: transparent;
+  color: #6574cd;
+  cursor: pointer;
+}
+
+div.row div.function4:hover {
+  color: white;
+  background-color: #6574cd;
+}
+
+div.row div.function4 i {
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  margin-right: 0.5rem;
+}
+
+div.row div.function4 span {
+  font-size: 1.1rem;
+}
+
+div.row div.function5 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  background: transparent;
+  color: #ca1f7b;
+  cursor: pointer;
+}
+
+div.row div.function5:hover {
+  color: white;
+  background-color: #ca1f7b;
+}
+
+div.row div.function5 i {
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  margin-right: 0.5rem;
+}
+
+div.row div.function5 span {
+  font-size: 1.1rem;
+}
+
+div.row div.function6 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  background: transparent;
+  color: #f6993f;
+  cursor: pointer;
+}
+
+div.row div.function6:hover {
+  color: white;
+  background-color: #f6993f;
+}
+
+div.row div.function6 i {
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  margin-right: 0.5rem;
+}
+
+div.row div.function6 span {
+  font-size: 1.1rem;
+}
+
+div.row div.function7 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  background: transparent;
+  color: #f66D9b;
+  cursor: pointer;
+}
+
+div.row div.function7:hover {
+  color: white;
+  background-color: #f66D9b;
+}
+
+div.row div.function7 i {
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  margin-right: 0.5rem;
+}
+
+div.row div.function7 span {
+  font-size: 1.1rem;
+}
+

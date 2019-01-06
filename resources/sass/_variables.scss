@@ -1,27 +1,44 @@
+// 定義裝置 DESKTOP MOBILE TABLET
+@mixin screen($point) {
+    @if ($point == desktop) {
+        @media only screen and (min-width: 1200px) {
+            @content;
+        }
+    } @else if ($point == tablet) {
+        @media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+            @content;
+        }
+    } @else if ($point == ipad) {
+        @media only screen and (min-width: 768px) and (max-width: 991.88px) {
+            @content;
+        }
+    } @else if ($point == mobile) {
+        @media only screen and (max-width: 767.98px) {
+            @content;
+        }
+    }
+}
+
+$image_path: "../images/";
+
 // body
 $body-bg: #e2e3e5;
 
-// typography
-$fa-font-path: "../webfonts";
-@import "fontawesome/fontawesome";
-@import "fontawesome/solid";
-@import "fontawesome/brands";
-
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC|Roboto+Slab');
-$font-family-sans-serif: 'Roboto Slab', 'Noto Sans TC', sans-serif;
-
+// 字型大小
+$font-size-small: 0.7rem;
+$font-size-smaller: 0.8rem;
 $font-size-base: 0.9rem;
-$font-size-larger: 1.2rem;
-$font-size-large: 1.4rem;
-$font-size-x-large: 1.6rem;
-$font-size-xx-large: 1.8rem;
+$font-size-larger: 1rem;
+$font-size-large: 1.1rem;
+$font-size-x-large: 1.2rem;
+$font-size-xx-large: 1.3rem;
 
 $line-height-base: 1.6;
 
 // 顏色
-$blue: #3490dc;
+$blue: #1d68a7;
 $cyan: #6cb2eb;
-$green: #38c172;
+$green: #2d995b;
 $indigo: #6574cd;
 $magenta: #ca1f7b;
 $orange: #f6993f;
@@ -30,3 +47,5 @@ $purple: #9561e2;
 $red: #e3342f;
 $teal: #4dc0b5;
 $yellow: #ffed4a;
+
+$navbar-color: #373a3c;

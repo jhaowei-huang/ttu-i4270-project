@@ -1,0 +1,156 @@
+div.row div div.card img.card-img.img1 {
+  content: url(/images/speaker-01.jpg?a8252afedf2ace6e20876706b7184567);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 60%;
+  height: 60%;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.row div div.card img.card-img.img2 {
+  content: url(/images/speaker-02.jpg?a2517169105c520f833737e1f0c86f8a);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 60%;
+  height: 60%;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.row div div.card img.card-img.img3 {
+  content: url(/images/speaker-03.jpg?7b140b86bd53fc6952808547a3ad101a);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 60%;
+  height: 60%;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.row div div.card img.card-img.img4 {
+  content: url(/images/speaker-04.jpg?e2ccfb152ca9ae11db54dea3da5386a1);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 60%;
+  height: 60%;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.row div div.card img.card-img.img5 {
+  content: url(/images/speaker-05.jpg?f746140e10f25f4cc76c2cf7b982f6f3);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 60%;
+  height: 60%;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.row div div.card img.card-img.img6 {
+  content: url(/images/speaker-06.jpg?5be210e167e04144771d700749e85109);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 60%;
+  height: 60%;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.row div div.card img.card-img.img7 {
+  content: url(/images/speaker-07.jpg?3bdf300ebad9b0f05f6d950d515bcf45);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 60%;
+  height: 60%;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.row div div.card img.card-img.img8 {
+  content: url(/images/speaker-08.jpg?896ebc3407fe888143053f3d22aeb7a2);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 60%;
+  height: 60%;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.row div div.card img.card-img.img9 {
+  content: url(/images/speaker-09.jpg?73525435f64c0f7abfe01444774a8f95);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 60%;
+  height: 60%;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.row div div.card img.card-img.img10 {
+  content: url(/images/speaker-10.jpg?6e09704ac91d570ad405c51340cc17b4);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 60%;
+  height: 60%;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.row div div.card img.card-img.img11 {
+  content: url(/images/speaker-11.jpg?6221d5705002c6624e2037ebed9ee96e);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 60%;
+  height: 60%;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.row div div.card div.card-body p.card-name,
+div.row div div.card div.card-body p.card-job {
+  text-align: center;
+  width: auto;
+  line-height: 1.6;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+div.row div div.card div.card-body div div.btn-group {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#speakerModalCenterAvatar {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 60%;
+  height: 60%;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#speakerModalCenterText {
+  font-size: 0.7rem;
+}
+
+@media only screen and (max-width: 767.98px) {
+  #speakerModalCenterText {
+    font-size: 1.1rem;
+  }
+}
+

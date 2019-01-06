@@ -1,0 +1,24 @@
+table {
+  table-layout: fixed;
+}
+
+table tr th.column {
+  width: 6.5rem;
+}
+
+table tr th.column-name {
+  width: 6rem;
+}
+
+table tr th.column-phone {
+  width: 10rem;
+}
+
+table tr th.column-fax {
+  width: 6.5rem;
+}
+
+table tr th.column-email {
+  width: 15rem;
+}
+

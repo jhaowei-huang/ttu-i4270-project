@@ -1,4 +1,14 @@
 {
+    "/js/agenda.js": "/js/agenda.js",
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/css/index.css": "/css/index.css",
+    "/css/agenda.css": "/css/agenda.css",
+    "/css/map.css": "/css/map.css",
+    "/css/speaker.css": "/css/speaker.css",
+    "/css/contact.css": "/css/contact.css",
+    "/css/function.css": "/css/function.css",
+    "/js/function.js": "/js/function.js",
+    "/js/map.js": "/js/map.js",
+    "/js/speaker.js": "/js/speaker.js"
 }

@@ -30,18 +30,19 @@
                 <a class="nav-link" href="{{ URL::to('/contact') }}">聯絡我們</a>
             </li>
             @guest
+
                 <li class="nav-item">
-                    <a class="btn btn-link dropdown-toggle" id="agendaDropdownMenuLink" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">登入/註冊</a>
-                    <div class="dropdown-menu border-0 dropdown-menu-right"
-                         aria-labelledby="agendaDropdownMenuLink">
+                    <a class="nav-link dropdown-toggle" id="navDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">[登入/註冊]</a>
+                    <div class="dropdown-menu dropdown-menu-right border-0 float-left "
+                         aria-labelledby="navDropdownMenuLink">
                         @include('layouts.function', ['style' => 'css/function-dropdown.css'])
                     </div>
                 </li>
             @endguest
             @auth
                 <li class="nav-item">
-                    <a class="btn btn-link dropdown-toggle" id="agendaDropdownMenuLink" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" id="agendaDropdownMenuLink" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false"
                        style="right: auto; left: 0; color: #2d995b;">[ {{ Auth::user()->name }} ]</a>
                     <div class="dropdown-menu dropdown-menu-right border-0"
