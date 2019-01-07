@@ -15,7 +15,7 @@ class SignInPost extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -56,17 +56,14 @@ class SignInPost extends FormRequest
         ];
     }
 
-    /**
-     * Configure the validator instance.
-     *
-     * @param  \Illuminate\Validation\Validator $validator
-     *
-     * @return void
-     */
-    public function withValidator($validator)
+    public function credentials()
     {
-        if ($validator->passes()) {
-
-        }
+        return $this->field == 'email' ? [
+            'email' => $this->get('username'),
+            'password' => $this->get('password'),
+        ] : [
+            'username' => $this->get('username'),
+            'password' => $this->get('password'),
+        ];
     }
 }

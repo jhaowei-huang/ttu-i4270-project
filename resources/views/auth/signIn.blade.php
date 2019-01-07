@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                <span class="input-group-text"><i class="fa fa-fw fa-user"></i></span>
                             </div>
                             <input type="text" class="form-control" placeholder="帳號或是email"
                                    id="username" name="username">
@@ -35,14 +35,17 @@
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa fa-key"></i></span>
+                                <span class="input-group-text"><i class="fa fa-fw fa-key"></i></span>
                             </div>
                             <input type="password" class="form-control" placeholder="密碼"
                                    id="password" name="password">
                         </div>
                     </div>
                     <div class="alert alert-primary row justify-content-center align-content-between">
-                        <i class="fas fa-cog fa-spin fa-2x"></i>
+                        <button type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <i class="fas fa-cog fa-spin fa-2x loading-icon"></i>
                         <span class="validation-area text-center mt-1"></span>
                     </div>
                     <div class="form-inline mt-2">

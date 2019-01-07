@@ -6,79 +6,72 @@ use Illuminate\Http\Request;
 
 class SignUpController extends Controller
 {
+    protected $redirectTo = '/';
+
     /**
-     * Display a listing of the resource.
+     * 顯示註冊畫面
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return view('auth.signUp');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 登入
      *
+     * @param SignInPost $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function signIn(SignInPost $request)
     {
-        //
+        // 登入憑證，使用帳號或是email來登入
+        $credentials = $request->credentials();
+        // 是否有勾選'在此裝置記住我'
+        $remember = $request->has('remember') ? true : false;
+        // 嘗試登入
+        if (Auth::attempt($credentials, $remember)) {
+            // 登入成功
+//            if (Auth::user()->email_verified == 0) {
+//                // email還尚未驗證，要求跳轉至verifyUserEmail頁面
+//                return response()->json([
+//                    'redirect' => '/verifyUserEmail',
+//                    'errors' => []
+//                ]);
+//            } else {
+//                // email已經驗證，要求跳轉至首頁
+//                return response()->json([
+//                    'redirect' => '/',
+//                    'errors' => []
+//                ]);
+//            }
+            return response()->json([
+                'redirect' => '/',
+                'errors' => []
+            ]);
+        } else {
+            // 登入失敗，回報憑證錯誤
+            return response()->json([
+                'redirect' => '',
+                'errors' => [
+                    'username' => trans('validation.signIn.username.error'),
+                    'password' => trans('validation.signIn.password.error')
+                ]
+            ], 422);
+        }
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 登出
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function signOut(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        Auth::logout();
+        $request->session()->invalidate();
+        return redirect($this->redirectTo);
     }
 }

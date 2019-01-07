@@ -6,6 +6,13 @@ div.alert i {
   margin-right: 0.5rem;
 }
 
+div.alert .close {
+  float: none;
+  position: absolute;
+  right: 5%;
+  top: 5%;
+}
+
 .switch {
   position: relative;
   display: inline-block;

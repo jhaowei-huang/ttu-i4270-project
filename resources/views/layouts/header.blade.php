@@ -54,7 +54,7 @@
                             'profile' => true,
                             'style' => 'css/function-dropdown.css'
                         ])
-                        <form action="{{ route('signout') }}" method="POST">
+                        <form action="{{ route('signOut') }}" method="POST">
                             @csrf
                             <button type="submit" class="dropdown-item btn btn-link btn-sm"
                                     name="btn-signout"> 登出

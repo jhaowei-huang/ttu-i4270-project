@@ -1,0 +1,13 @@
+@import 'variables';
+
+form div.row div.form-group div.input-group {
+    //display: flex;
+
+    div.input-group-prepend {
+        //flex: 0 0 15%;
+
+        //span.input-group-text {
+        //    width: 100%;
+        //}
+    }
+}

@@ -36399,6 +36399,112 @@ __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap
 
 window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
+__webpack_require__(/*! ./auth/api.js */ "./resources/js/auth/api.js");
+
+/***/ }),
+
+/***/ "./resources/js/auth/api.js":
+/*!**********************************!*\
+  !*** ./resources/js/auth/api.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function alert(text, type) {
+  var alert = $('.alert');
+  var validation = $('.validation-area');
+  var loading = $('.loading-icon');
+  var close = $('.close');
+
+  if (type == null) {
+    alert.removeClass('alert-danger').addClass('alert-primary');
+    loading.css('display', 'block');
+    close.css('display', 'none');
+  } else if (type === 'error') {
+    alert.removeClass('alert-primary').addClass('alert-danger');
+    loading.css('display', 'none');
+    close.css('display', 'block');
+  }
+
+  if (text == null) {
+    alert.css('display', 'none').removeClass('d-flex');
+  } else {
+    alert.css('display', 'block').addClass('d-flex');
+  }
+
+  validation.html(text);
+}
+
+window.auth = exports = module.exports = {
+  waiting: function waiting() {
+    var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
+    if (status) {
+      // 等待資料傳輸中
+      alert('驗證中，請稍後');
+      $('input').prop('disabled', true);
+      $('#btn-submit').prop('disabled', true);
+    } else {
+      // 資料傳輸完畢
+      alert();
+      $('.input-invalid').removeClass('input-invalid');
+      $('input').prop('disabled', false);
+      $('#btn-submit').prop('disabled', false);
+    }
+  },
+  invalidInput: function invalidInput(errors) {
+    var errorMsg = '';
+
+    for (var key in errors) {
+      if (errors[key] !== '' && errors.hasOwnProperty(key)) {
+        errorMsg += errors[key] + '<br>';
+        $('#' + key).addClass('input-invalid');
+      }
+    }
+
+    alert(errorMsg, 'error');
+  },
+  success: function success(response) {
+    try {
+      // response正確，跳轉至指定頁面
+      window.location.href = response.redirect;
+    } catch (e) {
+      console.log(e);
+      console.log(response);
+      module.exports.waiting(false);
+    }
+  },
+  error: function error(jqXHR, exception) {
+    module.exports.waiting(false);
+
+    if (jqXHR.status === 422) {
+      // 狀態422為Laravel預設的表單驗證錯誤狀態
+      var errors = jqXHR.responseJSON.errors;
+      module.exports.invalidInput(errors);
+    } else {
+      alert();
+      $('.validation-area').append(jqXHR.status, '：伺服器錯誤');
+    }
+  },
+  ajax: function ajax() {
+    var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'GET';
+    var url = arguments.length > 1 ? arguments[1] : undefined;
+    var data = arguments.length > 2 ? arguments[2] : undefined;
+    var successHandller = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : module.exports.success;
+    var errorHandller = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : module.exports.error;
+    $.ajax({
+      type: type,
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      url: url,
+      data: data,
+      success: successHandller,
+      error: errorHandller
+    });
+  }
+};
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -36523,6 +36629,17 @@ if (token) {
 
 /***/ }),
 
+/***/ "./resources/sass/signUp.scss":
+/*!************************************!*\
+  !*** ./resources/sass/signUp.scss ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/speaker.scss":
 /*!*************************************!*\
   !*** ./resources/sass/speaker.scss ***!
@@ -36535,9 +36652,9 @@ if (token) {
 /***/ }),
 
 /***/ 0:
-/*!************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/index.scss ./resources/sass/agenda.scss ./resources/sass/map.scss ./resources/sass/speaker.scss ./resources/sass/contact.scss ./resources/sass/function.scss ./resources/sass/signIn.scss ***!
-  \************************************************************************************************************************************************************************************************************************************************************************/
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/index.scss ./resources/sass/agenda.scss ./resources/sass/map.scss ./resources/sass/speaker.scss ./resources/sass/contact.scss ./resources/sass/function.scss ./resources/sass/signIn.scss ./resources/sass/signUp.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -36549,7 +36666,8 @@ __webpack_require__(/*! D:\workspace\php\ttu-i4270-project\resources\sass\map.sc
 __webpack_require__(/*! D:\workspace\php\ttu-i4270-project\resources\sass\speaker.scss */"./resources/sass/speaker.scss");
 __webpack_require__(/*! D:\workspace\php\ttu-i4270-project\resources\sass\contact.scss */"./resources/sass/contact.scss");
 __webpack_require__(/*! D:\workspace\php\ttu-i4270-project\resources\sass\function.scss */"./resources/sass/function.scss");
-module.exports = __webpack_require__(/*! D:\workspace\php\ttu-i4270-project\resources\sass\signIn.scss */"./resources/sass/signIn.scss");
+__webpack_require__(/*! D:\workspace\php\ttu-i4270-project\resources\sass\signIn.scss */"./resources/sass/signIn.scss");
+module.exports = __webpack_require__(/*! D:\workspace\php\ttu-i4270-project\resources\sass\signUp.scss */"./resources/sass/signUp.scss");
 
 
 /***/ })

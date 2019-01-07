@@ -24,4 +24,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/speaker.scss', 'public/css')
     .sass('resources/sass/contact.scss', 'public/css')
     .sass('resources/sass/function.scss', 'public/css')
-    .sass('resources/sass/signIn.scss', 'public/css');
+    .sass('resources/sass/signIn.scss', 'public/css')
+    .sass('resources/sass/signUp.scss', 'public/css');
