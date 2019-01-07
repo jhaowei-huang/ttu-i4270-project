@@ -36,7 +36,7 @@
                        aria-haspopup="true" aria-expanded="false">[登入/註冊]</a>
                     <div class="dropdown-menu dropdown-menu-right border-0 float-left "
                          aria-labelledby="navDropdownMenuLink">
-                        @include('layouts.function', ['style' => 'css/function-dropdown.css'])
+                        @include('layouts.function', ['style' => 'dropdown-item'])
                     </div>
                 </li>
             @endguest

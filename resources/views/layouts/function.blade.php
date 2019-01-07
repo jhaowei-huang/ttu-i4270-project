@@ -12,12 +12,12 @@
 
     $justify = isset($align) ? $align : 'justify-content-between';
 
-    $path = isset($style) ? $style : 'css/function.css';
+    $type = isset($style) ? $style : 'row';
 @endphp
 
-<link href="{{ asset($path) }}" rel="stylesheet">
+<link href="{{ asset('css/function.css') }}" rel="stylesheet">
 
-@if($path == 'css/function.css')
+@if($type == 'row')
     <div class="row {{ $justify }} mt-2 mx-1">
         @if($enable[0])
             <div id="btn-register"
@@ -52,19 +52,19 @@
         @if($enable[5])
             <div id="btn-forgetPassword"
                  class="btn d-flex flex-fill justify-content-center align-content-between function6">
-                <i class="fas fa-question"></i></i><span>忘記密碼</span>
+                <i class="fas fa-question"></i><span>忘記密碼</span>
             </div>
         @endif
         @if($enable[6])
             <div id="btn-profile"
                  class="btn d-flex flex-fill justify-content-center align-content-between function7">
-                <i class="fas fa-user"></i></i><span>個人資訊</span>
+                <i class="fas fa-user"></i><span>個人資訊</span>
             </div>
         @endif
     </div>
 @endif
 
-@if($path == 'css/function-dropdown.css')
+@if($type == 'dropdown-item')
     <div class="dropdown-functions">
         @if($enable[3])
             <div class="dropdown-item">
@@ -86,7 +86,7 @@
             <div class="dropdown-item">
                 <div id="btn-forgetPassword"
                      class="item d-flex justify-content-center align-content-between function6">
-                    <i class="fas fa-question"></i></i><span>忘記密碼</span>
+                    <i class="fas fa-question"></i><span>忘記密碼</span>
                 </div>
             </div>
         @endif
@@ -94,7 +94,7 @@
             <div class="dropdown-item">
                 <div id="btn-profile"
                      class="item d-flex justify-content-center align-content-between function7">
-                    <i class="fas fa-user"></i></i><span>個人資訊</span>
+                    <i class="fas fa-user"></i><span>個人資訊</span>
                 </div>
             </div>
         @endif
