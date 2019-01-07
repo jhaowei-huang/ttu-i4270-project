@@ -36512,6 +36512,17 @@ if (token) {
 
 /***/ }),
 
+/***/ "./resources/sass/signIn.scss":
+/*!************************************!*\
+  !*** ./resources/sass/signIn.scss ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/speaker.scss":
 /*!*************************************!*\
   !*** ./resources/sass/speaker.scss ***!
@@ -36524,9 +36535,9 @@ if (token) {
 /***/ }),
 
 /***/ 0:
-/*!*******************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/index.scss ./resources/sass/agenda.scss ./resources/sass/map.scss ./resources/sass/speaker.scss ./resources/sass/contact.scss ./resources/sass/function.scss ***!
-  \*******************************************************************************************************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/index.scss ./resources/sass/agenda.scss ./resources/sass/map.scss ./resources/sass/speaker.scss ./resources/sass/contact.scss ./resources/sass/function.scss ./resources/sass/signIn.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -36537,7 +36548,8 @@ __webpack_require__(/*! D:\workspace\php\ttu-i4270-project\resources\sass\agenda
 __webpack_require__(/*! D:\workspace\php\ttu-i4270-project\resources\sass\map.scss */"./resources/sass/map.scss");
 __webpack_require__(/*! D:\workspace\php\ttu-i4270-project\resources\sass\speaker.scss */"./resources/sass/speaker.scss");
 __webpack_require__(/*! D:\workspace\php\ttu-i4270-project\resources\sass\contact.scss */"./resources/sass/contact.scss");
-module.exports = __webpack_require__(/*! D:\workspace\php\ttu-i4270-project\resources\sass\function.scss */"./resources/sass/function.scss");
+__webpack_require__(/*! D:\workspace\php\ttu-i4270-project\resources\sass\function.scss */"./resources/sass/function.scss");
+module.exports = __webpack_require__(/*! D:\workspace\php\ttu-i4270-project\resources\sass\signIn.scss */"./resources/sass/signIn.scss");
 
 
 /***/ })

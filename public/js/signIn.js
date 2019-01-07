@@ -81,46 +81,96 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/function.js":
-/*!**********************************!*\
-  !*** ./resources/js/function.js ***!
-  \**********************************/
+/***/ "./resources/js/auth/signIn.js":
+/*!*************************************!*\
+  !*** ./resources/js/auth/signIn.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$(document).ready(function () {
-  $('.btn, .item').click(function (e) {
-    var id = e.target.id === '' ? e.target.parentElement.id : e.target.id;
+function waiting() {
+  var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
 
-    if (id === 'btn-signin') {
-      window.location.href = '/signIn';
-    } else if (id === 'btn-signup') {
-      window.location.href = '/signUp';
-    } else if (id === 'btn-forgetPassword') {
-      window.location.href = '/forgetPassword';
-    } else if (id === 'btn-profile') {
-      window.location.href = '/profile';
-    } else if (id === 'btn-register' || id === 'btn-inquire' || id === 'btn-cancel') {
-      alert('尚未完成');
+  if (status) {
+    // 等待資料傳輸中
+    $('.validation-area').text('驗證中，請稍後');
+    $('.alert').css('display', 'block').addClass('d-flex');
+    $('input').prop('disabled', true);
+    $('#btn-submit').prop('disabled', true);
+  } else {
+    // 資料傳輸完畢
+    $('.input-invalid').removeClass('input-invalid');
+    $('.validation-area').text('');
+    $('.alert').css('display', 'none').removeClass('d-flex');
+    $('input').prop('disabled', false);
+    $('#btn-submit').prop('disabled', false);
+  }
+}
+
+function invalidInput(errors) {
+  for (var key in errors) {
+    if (errors[key] !== '' && errors.hasOwnProperty(key)) {
+      $('.validation-area').append(errors[key] + '\n');
+      $('#' + key).addClass('input-invalid');
     }
+  }
+}
+
+function success(response) {
+  try {
+    if (response.errors === null || response.errors.length === 0) {
+      // 登入憑證正確，跳轉至指定頁面
+      window.location.href = response.redirect;
+    } else {
+      waiting(false);
+      invalidInput(response.errors);
+    }
+  } catch (e) {
+    console.log(e);
+    console.log(response);
+    waiting(false);
+  }
+}
+
+function error(jqXHR, exception) {
+  waiting(false);
+
+  if (jqXHR.status === 422) {
+    // 狀態422為Laravel預設的表單驗證錯誤狀態
+    var errors = jqXHR.responseJSON.errors;
+    invalidInput(errors);
+  } else {
+    $('.validation-area').append(jqXHR.status, '：伺服器錯誤');
+  }
+}
+
+$(document).ready(function () {
+  $('#form-signIn').on('submit', function (e) {
+    // 停用預設的遞送表單，預設的會導致頁面刷新
+    e.preventDefault(); // disabled的欄位無法使用jquery serialize函式，故需要先儲存表單資訊
+
+    var data = $('#form-signIn').serialize();
+    waiting(); // 使用ajax遞送表單，避免頁面刷新
+
+    ajax('POST', '/signIn', data, success, error);
   });
 });
 
 /***/ }),
 
-/***/ 4:
-/*!****************************************!*\
-  !*** multi ./resources/js/function.js ***!
-  \****************************************/
+/***/ 5:
+/*!*******************************************!*\
+  !*** multi ./resources/js/auth/signIn.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\workspace\php\ttu-i4270-project\resources\js\function.js */"./resources/js/function.js");
+module.exports = __webpack_require__(/*! D:\workspace\php\ttu-i4270-project\resources\js\auth\signIn.js */"./resources/js/auth/signIn.js");
 
 
 /***/ })

@@ -22,4 +22,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/speaker', 'PageController@speaker')->name('speaker');
     Route::get('/registration', 'PageController@registration')->name('registration');
     Route::get('/contact', 'PageController@contact')->name('contact');
+
+    Route::resource('signIn', 'SignInController');
 });

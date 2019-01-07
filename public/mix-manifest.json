@@ -8,7 +8,9 @@
     "/css/speaker.css": "/css/speaker.css",
     "/css/contact.css": "/css/contact.css",
     "/css/function.css": "/css/function.css",
+    "/css/signIn.css": "/css/signIn.css",
     "/js/function.js": "/js/function.js",
     "/js/map.js": "/js/map.js",
+    "/js/signIn.js": "/js/signIn.js",
     "/js/speaker.js": "/js/speaker.js"
 }

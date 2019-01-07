@@ -3,12 +3,16 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    protected $primaryKey = 'user_id';
+
+    public $incrementing = false;
+    protected $keyType = 'string';
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +20,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'password', 'email', 'name', 'address', 'department',
+        'position', 'phone', 'phone_ext', 'fax', 'fax_ext', 'email_verified'
     ];
 
     /**
@@ -25,6 +30,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token'
     ];
+
+//    public function emailVerify()
+//    {
+//        return $this->hasOne('App\EmailVerify', 'user_id', 'user_id');
+//    }
+//
+//    public function passwordReset()
+//    {
+//        return $this->hasOne('App\PasswordReset', 'user_id', 'user_id');
+//    }
 }
