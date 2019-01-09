@@ -12,6 +12,15 @@
                     @auth
                         <div class="card-body">
                             @if(Auth::user()->verification == false)
+                                @if(Session::has('message'))
+                                    <div
+                                        class="alert alert-info alert-fixed row justify-content-center align-content-between"
+                                        role="alert">
+                                        <i class="fas fa-check-circle fa-fw fa-2x"></i>
+                                        <span
+                                            class="text-center mt-1">{{ Session::pull('message') }}</span>
+                                    </div>
+                                @endif
                                 <p>{{ Auth::user()->name }} 您好</p>
                                 <p>系統已經在 <strong
                                         class="color-primary">{{ Auth::user()->userVerification->updated_at }}</strong>
@@ -39,15 +48,6 @@
                                         <i class="fas fa-cog fa-spin fa-2x loading-icon"></i>
                                         <span class="validation-area text-center mt-1"></span>
                                     </div>
-                                    @if(Session::has('message'))
-                                        <div
-                                            class="alert alert-info alert-fixed row justify-content-center align-content-between"
-                                            role="alert">
-                                            <i class="fas fa-check-circle fa-fw fa-2x"></i>
-                                            <span
-                                                class="text-center mt-1">{{ Session::pull('message') }}</span>
-                                        </div>
-                                    @endif
                                     <div class="row justify-content-center my-2">
                                         <button type="submit"
                                                 class="btn btn-primary mx-3 mx-md-0 flex-fill flex-md-grow-0"
