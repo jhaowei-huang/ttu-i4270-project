@@ -52,8 +52,8 @@ class SignInPost extends FormRequest
     public function messages()
     {
         return [
-            'username.required' => trans('validation.signIn.username.require'),
-            'password.required' => trans('validation.signIn.password.require')
+            'username.required' => trans('validation.signIn.username.required'),
+            'password.required' => trans('validation.signIn.password.required')
         ];
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SignUpPost;
 use Illuminate\Http\Request;
 
 class SignUpController extends Controller
@@ -19,9 +20,9 @@ class SignUpController extends Controller
     }
 
     /**
-     * 登入
+     * 註冊
      *
-     * @param SignUpPost $request
+     * @param \App\Http\Requests\SignUpPost $request
      * @return \Illuminate\Http\Response
      */
     public function signUp(SignUpPost $request)

@@ -26,7 +26,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-fw fa-at mx-auto"></i></span>
                                 </div>
-                                <input type="email" class="form-control input-signUp" placeholder="email" id="email"
+                                <input type="text" class="form-control input-signUp" placeholder="email" id="email"
                                        name="email">
                             </div>
                         </div>

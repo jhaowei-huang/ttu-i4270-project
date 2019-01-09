@@ -3,6 +3,7 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use ReCaptcha\ReCaptcha;
 
 class Captcha implements Rule
 {
@@ -14,6 +15,7 @@ class Captcha implements Rule
     public function __construct()
     {
     }
+
     /**
      * Determine if the validation rule passes.
      *
@@ -23,12 +25,13 @@ class Captcha implements Rule
      */
     public function passes($attribute, $value)
     {
-        $recaptcha = new ReCaptcha(env('GOOGLE_RECAPTCHA_SECRET'));
+        $recaptcha = new ReCaptcha(config('app.google_recaptcha_secret'));
         $response = $recaptcha->verify($value);
         // 得知是哪一類型的錯誤
         // $this->error_code = $response->getErrorCodes();
         return $response->isSuccess();
     }
+
     /**
      * Get the validation error message.
      *
@@ -36,6 +39,6 @@ class Captcha implements Rule
      */
     public function message()
     {
-        return trans('custom_validation.error_recaptcha_validation');
+        return trans('validation.g-recaptcha');
     }
 }
