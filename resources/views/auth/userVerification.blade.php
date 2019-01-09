@@ -8,7 +8,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-sm-8 col-md-6">
                 <div class="card">
-                    <div class="card-header">{{ config('app.email_subject.verification') }}</div>
+                    <div class="card-header lead">{{ config('app.email_subject.verification') }}</div>
                     @auth
                         <div class="card-body">
                             @if(Auth::user()->verification == false)
@@ -18,7 +18,7 @@
                                         role="alert">
                                         <i class="fas fa-check-circle fa-fw fa-2x"></i>
                                         <span
-                                            class="text-center mt-1">{{ Session::pull('message') }}</span>
+                                            class="text-center mt-1">{{ Session::pull('message') . Auth::user()->email }}</span>
                                     </div>
                                 @endif
                                 <p>{{ Auth::user()->name }} 您好</p>

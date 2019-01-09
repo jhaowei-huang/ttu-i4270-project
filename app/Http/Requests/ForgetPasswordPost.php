@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Captcha;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 
-class ResendEmailPost extends FormRequest
+class ForgetPasswordPost extends FormRequest
 {
     protected $redirect = '/';
 
@@ -17,7 +17,7 @@ class ResendEmailPost extends FormRequest
      */
     public function authorize()
     {
-        return Auth::check() ? true : false;
+        return Auth::check() ? false : true;
     }
 
     /**
@@ -28,9 +28,8 @@ class ResendEmailPost extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'email',
-                Rule::unique('users', 'email')
-                    ->ignore(Auth::user()->user_id, 'user_id')]
+            'g-recaptcha-response' => [new Captcha()],
+            'email' => ['required', 'email', 'exists:users']
         ];
     }
 
@@ -42,9 +41,9 @@ class ResendEmailPost extends FormRequest
     public function messages()
     {
         return [
-            'email.required' => trans('validation.resendEmail.email.required'),
-            'email.email' => trans('validation.resendEmail.email.email'),
-            'email.unique' => trans('validation.resendEmail.email.unique'),
+            'email.required' => trans('validation.forgetPassword.email.required'),
+            'email.email' => trans('validation.forgetPassword.email.email'),
+            'email.exists' => trans('validation.forgetPassword.email.exists'),
         ];
     }
 }

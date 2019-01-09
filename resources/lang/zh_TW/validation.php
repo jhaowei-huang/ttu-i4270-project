@@ -2,6 +2,7 @@
 
 return [
     'g-recaptcha' => '請完成驗證碼',
+    'token' => '傳輸內容被修改，請重新嘗試',
     'forget_password' => [
         'email' => [
 
@@ -71,6 +72,47 @@ return [
             'required' => '請輸入email',
             'email' => 'email格式錯誤',
             'unique' => '該email已經被其他人使用'
+        ],
+    ],
+    'forgetPassword' => [
+        'email' => [
+            'required' => '請輸入email',
+            'email' => 'email格式錯誤',
+            'exists' => '找不到使用該email的帳號'
+        ],
+    ],
+    'resetPassword' => [
+        'password' => [
+            'required' => '請輸入密碼',
+            'different' => '密碼與帳號不能一樣',
+            'regex' => '密碼至少包含1個英文字以及1個數字，可以有特殊符號，長度6~20個字元'
+        ],
+        'confirm_password' => [
+            'required' => '請再輸入一次密碼',
+            'same' => '兩次密碼不一樣',
+        ],
+    ],
+    'updatePassword' => [
+        'old_password' => [
+            'required' => '請輸入原密碼',
+            'error' => '原密碼錯誤',
+        ],
+        'new_password' => [
+            'required' => '請輸入新密碼',
+            'different' => '新密碼與帳號不能一樣',
+            'regex' => '新密碼至少包含1個英文字以及1個數字，可以有特殊符號，長度6~20個字元'
+        ],
+        'confirm_new_password' => [
+            'required' => '請再輸入一次密碼',
+            'same' => '兩次密碼不一樣',
+        ],
+    ],
+    'updateEmail' => [
+        'email' => [
+            'required' => '請輸入新的email',
+            'email' => '新的email格式錯誤',
+            'unique' => '該email已經被其他人使用',
+            'same' => '與原本的email一樣'
         ],
     ],
 ];

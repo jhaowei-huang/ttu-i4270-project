@@ -10,10 +10,15 @@
     "/css/function.css": "/css/function.css",
     "/css/signIn.css": "/css/signIn.css",
     "/css/signUp.css": "/css/signUp.css",
+    "/js/forgetPassword.js": "/js/forgetPassword.js",
     "/js/function.js": "/js/function.js",
     "/js/map.js": "/js/map.js",
+    "/js/profile.js": "/js/profile.js",
+    "/js/resetPassword.js": "/js/resetPassword.js",
     "/js/signIn.js": "/js/signIn.js",
     "/js/signUp.js": "/js/signUp.js",
     "/js/speaker.js": "/js/speaker.js",
+    "/js/updateEmail.js": "/js/updateEmail.js",
+    "/js/updatePassword.js": "/js/updatePassword.js",
     "/js/userVerification.js": "/js/userVerification.js"
 }

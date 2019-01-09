@@ -38,7 +38,6 @@ window.auth = exports = module.exports = {
         'fax': '選填，請輸入傳真，格式：[區碼][號碼]，例如：0221822928',
         'fax_ext': '選填，請輸入傳真分機號碼，最多10碼，例如：6572'
     },
-
     waiting: function (status = true) {
         if (status) {
             $('.alert-fixed').alert('close');

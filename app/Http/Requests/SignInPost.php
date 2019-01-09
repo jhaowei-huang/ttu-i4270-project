@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class SignInPost extends FormRequest
 {
+    protected $redirect = '/';
     protected $field;
 
     /**

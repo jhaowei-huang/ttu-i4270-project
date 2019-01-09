@@ -79,12 +79,16 @@ footer {
     border: 0.1rem solid $red !important;
 }
 
-.color-primary {
+.color-primary, .color-red {
     color: $red;
 }
 
-.color-secondary {
+.color-secondary, .color-blue {
     color: $blue;
+}
+
+.color-third, .color-green {
+    color: $green;
 }
 
 div.alert:not(.alert-fixed)  {

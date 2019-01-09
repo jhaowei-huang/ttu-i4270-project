@@ -19,9 +19,9 @@ class VerifyController extends Controller
         return ($token1 === $token2) ? true : false;
     }
 
-    protected function checkExpiredTime($token1, $token2)
+    protected function checkExpiredTime(Carbon $time1, Carbon $time2)
     {
-        return ($token1 === $token2) ? true : false;
+        return ($time1->diffInMinutes($time2) > config('app.email_expired_time')) ? true : false;
     }
 
     public function index()
@@ -50,8 +50,8 @@ class VerifyController extends Controller
         }
 
         $now = Carbon::now();
-        $diff = $now->diffInMinutes($verification->updated_at);
-        if ($diff > config('app.email_expired_time')) {
+
+        if ($this->checkExpiredTime($now, $verification->updated_at)) {
             return view('auth.userVerificationResult')
                 ->with([
                     'status' => 3,
@@ -74,6 +74,8 @@ class VerifyController extends Controller
 
     public function resend(ResendEmailPost $request)
     {
+        session(['message' => '已經重新寄送至']);
+
         $user = Auth::user();
 
         if ($user->verification == 1) {

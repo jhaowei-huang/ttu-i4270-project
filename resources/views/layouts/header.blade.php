@@ -52,7 +52,7 @@
                             'signup' => false,
                             'forget' => false,
                             'profile' => true,
-                            'style' => 'css/function-dropdown.css'
+                            'style' => 'dropdown-item'
                         ])
                         <form action="{{ route('signOut') }}" method="POST">
                             @csrf
