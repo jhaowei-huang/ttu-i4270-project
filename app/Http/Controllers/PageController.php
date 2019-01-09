@@ -40,4 +40,9 @@ class PageController extends Controller
     {
         return view('pages.contact');
     }
+
+    public function checkAuth()
+    {
+        return view('auth.checkAuth');
+    }
 }

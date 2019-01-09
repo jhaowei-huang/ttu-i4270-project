@@ -52,7 +52,7 @@
                         <div class="input-group my-2 mt-md-0 flex-fill">
                             <label class="switch mr-2">
                                 <input type="checkbox" class="success" id="remember" name="remember">
-                                <span class="slider round"></span>
+                                <span class="slider"></span>
                             </label>
                             <label id="remember-label" for="remember">在此裝置記住我</label>
                         </div>

@@ -1,7 +1,7 @@
 @extends('layouts.master', ['title' => '註冊會員', 'current' => ''])
 
 @push('styles')
-    <link href="{{asset('css/signup.css')}}" rel="stylesheet">
+    <link href="{{asset('css/signUp.css')}}" rel="stylesheet">
 @endpush
 
 @section('content')

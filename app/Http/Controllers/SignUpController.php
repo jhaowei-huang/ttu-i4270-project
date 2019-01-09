@@ -21,10 +21,10 @@ class SignUpController extends Controller
     /**
      * 登入
      *
-     * @param SignInPost $request
+     * @param SignUpPost $request
      * @return \Illuminate\Http\Response
      */
-    public function signIn(SignInPost $request)
+    public function signUp(SignUpPost $request)
     {
         // 登入憑證，使用帳號或是email來登入
         $credentials = $request->credentials();

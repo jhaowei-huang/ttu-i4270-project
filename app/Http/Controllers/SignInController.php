@@ -48,8 +48,11 @@ class SignInController extends Controller
 //                    'errors' => []
 //                ]);
 //            }
+
+            session(['signIn_message'=>'登入成功']);
+
             return response()->json([
-                'redirect' => '/',
+                'redirect' => '/checkAuth',
                 'errors' => []
             ]);
         } else {

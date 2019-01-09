@@ -22,10 +22,12 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/speaker', 'PageController@speaker')->name('speaker');
     Route::get('/registration', 'PageController@registration')->name('registration');
     Route::get('/contact', 'PageController@contact')->name('contact');
+    Route::get('/checkAuth', 'PageController@checkAuth')->name('checkAuth');
 
     Route::get('/signIn', 'SignInController@index');
     Route::post('/signIn', 'SignInController@signIn');
     Route::post('/signOut', 'SignInController@signOut')->name('signOut');
 
     Route::get('/signUp', 'SignUpController@index');
+    Route::post('/signUp', 'SignUpController@signUp');
 });

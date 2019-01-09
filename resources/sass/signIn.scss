@@ -24,7 +24,12 @@ div.alert {
     display: inline-block;
     width: 2.5rem;
     height: 1.5rem;
-    float: right;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .slider {
@@ -51,10 +56,9 @@ div.alert {
     transition: .4s;
 }
 
-input.success:checked + .slider {
-    background-color: #8bc34a;
+input:checked + .slider {
+    background-color: #2196F3;
 }
-
 
 input:focus + .slider {
     box-shadow: 0 0 1px #2196F3;
@@ -66,10 +70,8 @@ input:checked + .slider:before {
     transform: translateX(1rem);
 }
 
-.slider.round {
-    border-radius: 1rem;
-}
-
-.slider.round:before {
-    border-radius: 50%;
+.input-invalid {
+    color: $red;
+    border-color: $red;
+    border-width: 0.15em;
 }

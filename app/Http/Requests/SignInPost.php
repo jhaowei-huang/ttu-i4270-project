@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SignInPost extends FormRequest
 {
@@ -15,7 +16,7 @@ class SignInPost extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::check() ? false : true;
     }
 
     /**
