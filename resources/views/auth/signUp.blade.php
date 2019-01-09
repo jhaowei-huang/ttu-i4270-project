@@ -160,7 +160,6 @@
 @endsection
 
 @push('scripts')
-    <!-- load Google recaotcha service -->
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src='{{ asset('js/signUp.js') }}'></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="{{ asset('js/signUp.js') }}"></script>
 @endpush

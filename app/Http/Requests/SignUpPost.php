@@ -32,9 +32,9 @@ class SignUpPost extends FormRequest
             'password' => ['required', 'different:username', 'regex:/^(?=.*\d)(?=.*[a-zA-Z]).{6,20}$/'],
             'confirm_password' => 'required | same:password',
             'name' => ['required', 'regex:/^[\x{4e00}-\x{9fa5}]{2,}$|[^!@#$%\^&*()_\-=+~`,.<>\]\[\{\}\|\'\"\/\\\\\;:]{3,}$/Au'],
-            'address' => 'nullable | string',
-            'department' => 'nullable | string',
-            'position' => 'nullable | string',
+            'address' => 'nullable | string | max:255',
+            'department' => 'nullable | string | max:255',
+            'position' => 'nullable | string | max:255',
             'phone' => ['nullable', 'max:10', 'regex:/^[0]{1}[0-9]{1,3}[0-9]{5,8}$/'],
             'phone_ext' => ['nullable', 'max:10', 'regex:/^[0-9]{0,10}$/'],
             'fax' => ['nullable', 'max:10', 'regex:/^[0]{1}[0-9]{1,3}[0-9]{5,8}$/'],
@@ -70,6 +70,14 @@ class SignUpPost extends FormRequest
             'phone_ext.*' => trans('validation.signUp.phone_ext.error'),
             'fax.*' => trans('validation.signUp.fax.error'),
             'fax_ext.*' => trans('validation.signUp.fax_ext.error'),
+        ];
+    }
+
+    public function credentials()
+    {
+        return [
+            'username' => $this->get('username'),
+            'password' => $this->get('password'),
         ];
     }
 }

@@ -16,6 +16,10 @@ function setTooltip() {
 $(document).ready(function () {
     setTooltip();
 
+    $('.close').on('click', function () {
+        auth.waiting(false);
+    });
+
     $('#form-signup').on('submit', function (e) {
         // 停用預設的遞送表單，預設的會導致頁面刷新
         e.preventDefault();

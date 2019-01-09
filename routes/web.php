@@ -22,12 +22,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/speaker', 'PageController@speaker')->name('speaker');
     Route::get('/registration', 'PageController@registration')->name('registration');
     Route::get('/contact', 'PageController@contact')->name('contact');
-    Route::get('/checkAuth', 'PageController@checkAuth')->name('checkAuth');
-
+    // 登入、登出
     Route::get('/signIn', 'SignInController@index');
     Route::post('/signIn', 'SignInController@signIn');
     Route::post('/signOut', 'SignInController@signOut')->name('signOut');
-
+    // 註冊
     Route::get('/signUp', 'SignUpController@index');
     Route::post('/signUp', 'SignUpController@signUp');
     // 接收帳號驗證信、重新寄送、驗證結果

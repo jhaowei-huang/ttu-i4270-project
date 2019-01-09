@@ -10,6 +10,11 @@ class SignInController extends Controller
 {
     protected $redirectTo = '/';
 
+    public function __construct()
+    {
+        $this->middleware('guest')->except('signOut');
+    }
+
     /**
      * 顯示登入畫面
      *
@@ -35,24 +40,10 @@ class SignInController extends Controller
         // 嘗試登入
         if (Auth::attempt($credentials, $remember)) {
             // 登入成功
-//            if (Auth::user()->email_verified == 0) {
-//                // email還尚未驗證，要求跳轉至verifyUserEmail頁面
-//                return response()->json([
-//                    'redirect' => '/verifyUserEmail',
-//                    'errors' => []
-//                ]);
-//            } else {
-//                // email已經驗證，要求跳轉至首頁
-//                return response()->json([
-//                    'redirect' => '/',
-//                    'errors' => []
-//                ]);
-//            }
-
-            session(['signIn_message'=>'登入成功']);
+            session(['message' => '登入成功']);
 
             return response()->json([
-                'redirect' => '/checkAuth',
+                'redirect' => '/userVerification',
                 'errors' => []
             ]);
         } else {
