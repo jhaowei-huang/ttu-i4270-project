@@ -14,5 +14,6 @@
     "/js/map.js": "/js/map.js",
     "/js/signIn.js": "/js/signIn.js",
     "/js/signUp.js": "/js/signUp.js",
-    "/js/speaker.js": "/js/speaker.js"
+    "/js/speaker.js": "/js/speaker.js",
+    "/js/userVerification.js": "/js/userVerification.js"
 }

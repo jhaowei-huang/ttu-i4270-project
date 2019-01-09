@@ -30,4 +30,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/signUp', 'SignUpController@index');
     Route::post('/signUp', 'SignUpController@signUp');
+    // 接收帳號驗證信、重新寄送、驗證結果
+    Route::get('/userVerification/{user_id}/{token}', 'VerifyController@get');
+    Route::post('/userVerification', 'VerifyController@resend');
+    Route::get('/userVerification', 'VerifyController@index')->name('userVerification');
 });

@@ -1,5 +1,5 @@
 function alert(text, type) {
-    let alert = $('.alert');
+    let alert = $('.alert:not(.alert-fixed)');
     let validation = $('.validation-area');
     let loading = $('.loading-icon');
     let close = $('.close');
@@ -41,6 +41,7 @@ window.auth = exports = module.exports = {
 
     waiting: function (status = true) {
         if (status) {
+            $('.alert-fixed').alert('close');
             // 等待資料傳輸中
             alert('驗證中，請稍後');
             $('input').prop('disabled', true);
@@ -51,11 +52,18 @@ window.auth = exports = module.exports = {
             $('.input-invalid').removeClass('input-invalid');
             $('input').prop('disabled', false);
             $('#btn-submit').prop('disabled', false);
+
+            // 如果該頁面有recaptcha則刷新
+            if ($('.g-recaptcha').length)
+                grecaptcha.reset();
         }
     },
     invalidInput: function (errors) {
         let errorMsg = '';
         for (let key in errors) {
+            if (key === 'g-recaptcha-response')
+                $('.g-recaptcha').addClass('input-invalid');
+
             if (errors[key] !== '' && errors.hasOwnProperty(key)) {
                 errorMsg += errors[key] + '<br>';
                 $('#' + key).addClass('input-invalid');
@@ -74,21 +82,18 @@ window.auth = exports = module.exports = {
             module.exports.waiting(false);
         }
     },
-    error:
-        function (jqXHR, exception) {
-            module.exports.waiting(false);
+    error: function (jqXHR, exception) {
+        module.exports.waiting(false);
 
-            if (jqXHR.status === 422) {
-                // 狀態422為Laravel預設的表單驗證錯誤狀態
-                let errors = jqXHR.responseJSON.errors;
-                module.exports.invalidInput(errors);
-            } else {
-                alert();
-                $('.validation-area').append(jqXHR.status, '：伺服器錯誤');
-            }
+        if (jqXHR.status === 422) {
+            // 狀態422為Laravel預設的表單驗證錯誤狀態
+            let errors = jqXHR.responseJSON.errors;
+            module.exports.invalidInput(errors);
+        } else {
+            alert();
+            $('.validation-area').append(jqXHR.status, '：伺服器錯誤');
         }
-
-    ,
+    },
     ajax: function (type = 'GET', url, data, successHandller = module.exports.success, errorHandller = module.exports.error) {
         $.ajax({
             type: type,

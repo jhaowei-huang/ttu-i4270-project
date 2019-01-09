@@ -69,9 +69,3 @@ input:checked + .slider:before {
     -ms-transform: translateX(1rem);
     transform: translateX(1rem);
 }
-
-.input-invalid {
-    color: $red;
-    border-color: $red;
-    border-width: 0.15em;
-}

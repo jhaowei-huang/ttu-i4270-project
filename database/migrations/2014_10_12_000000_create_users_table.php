@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable(false);
             $table->string('name')->nullable(false);
             // 選填欄位
-            $table->string('address', 500)->nullable(true);
+            $table->string('address')->nullable(true);
             $table->string('department')->nullable(true);
             $table->string('position')->nullable(true);
             $table->string('phone', 10)->nullable(true);
@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('fax', 10)->nullable(true);
             $table->string('fax_ext', 10)->nullable(true);
             // 驗證相關欄位
-            $table->boolean('email_verified')->nullable(false)->default(0);
+            $table->boolean('verification')->nullable(false)->default(0);
             $table->string('remember_token')->nullable(true);
             $table->timestamps();
         });

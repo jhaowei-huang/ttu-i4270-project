@@ -228,5 +228,8 @@ return [
 
     'google_recaptcha_key' => env('GOOGLE_RECAPTCHA_KEY', ''),
     'google_recaptcha_secret' => env('GOOGLE_RECAPTCHA_SECRET', ''),
-
+    'email_expired_time' => env('EMAIL_EXPIRED_TIME', 10),
+    'email_subject' => [
+        'verification' => '帳號email驗證',
+    ],
 ];
