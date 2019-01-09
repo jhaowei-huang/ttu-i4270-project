@@ -66,4 +66,11 @@ return [
             'error' => '傳真分機格式錯誤，請輸入數字最多10碼'
         ],
     ],
+    'resendEmail' => [
+        'email' => [
+            'required' => '請輸入email',
+            'email' => 'email格式錯誤',
+            'unique' => '該email已經被其他人使用'
+        ],
+    ],
 ];

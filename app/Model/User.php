@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -20,8 +20,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'password', 'email', 'name', 'address', 'department',
-        'position', 'phone', 'phone_ext', 'fax', 'fax_ext', 'email_verified'
+        'user_id', 'username', 'password', 'email', 'name', 'address', 'department',
+        'position', 'phone', 'phone_ext', 'fax', 'fax_ext', 'verification'
     ];
 
     /**
@@ -33,13 +33,13 @@ class User extends Authenticatable
         'password', 'remember_token'
     ];
 
-//    public function emailVerify()
-//    {
-//        return $this->hasOne('App\EmailVerify', 'user_id', 'user_id');
-//    }
-//
-//    public function passwordReset()
-//    {
-//        return $this->hasOne('App\PasswordReset', 'user_id', 'user_id');
-//    }
+    public function userVerification()
+    {
+        return $this->hasOne('App\Model\UserVerification', 'user_id', 'user_id');
+    }
+
+    public function passwordReset()
+    {
+        return $this->hasOne('App\Model\PasswordReset', 'user_id', 'user_id');
+    }
 }

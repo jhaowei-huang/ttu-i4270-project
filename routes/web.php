@@ -33,4 +33,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/userVerification/{user_id}/{token}', 'VerifyController@get');
     Route::post('/userVerification', 'VerifyController@resend');
     Route::get('/userVerification', 'VerifyController@index')->name('userVerification');
+    // 忘記密碼、接收重設密碼信、重設結果
+    Route::get('/forgetPassword', 'ResetPasswordController@index');
+    Route::get('/resetPassword/{user_id}/{token}', 'ResetPasswordController@get');
+    Route::post('/resetPassword', 'ResetPasswordController@reset');
+    Route::get('/resetPassword', 'VerifyController@index')->name('userVerification');
 });
