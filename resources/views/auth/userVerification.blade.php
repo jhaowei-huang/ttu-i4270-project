@@ -18,7 +18,7 @@
                                         role="alert">
                                         <i class="fas fa-check-circle fa-fw fa-2x"></i>
                                         <span
-                                            class="text-center mt-1">{{ Session::pull('message') . Auth::user()->email }}</span>
+                                            class="text-center mt-1">{{ Session::pull('message') }}</span>
                                     </div>
                                 @endif
                                 <p>{{ Auth::user()->name }} 您好</p>
