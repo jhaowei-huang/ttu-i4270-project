@@ -74,8 +74,6 @@ class VerifyController extends Controller
 
     public function resend(ResendEmailPost $request)
     {
-        session(['message' => '已經重新寄送至']);
-
         $user = Auth::user();
 
         if ($user->verification == 1) {
