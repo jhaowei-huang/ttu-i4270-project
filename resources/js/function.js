@@ -10,7 +10,9 @@ $(document).ready(function () {
             window.location.href = '/forgetPassword';
         } else if (id === 'btn-profile') {
             window.location.href = '/profile';
-        } else if (id === 'btn-register' || id === 'btn-inquire' || id === 'btn-cancel') {
+        } else if (id === 'btn-register') {
+            window.location.href = '/registration/onlineRegister';
+        } else if (id === 'btn-inquire' || id === 'btn-cancel') {
             alert('尚未完成');
         }
     });

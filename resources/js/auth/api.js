@@ -105,5 +105,4 @@ window.auth = exports = module.exports = {
             error: errorHandller
         })
     }
-}
-;
+};

@@ -47,4 +47,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/profile/updatePassword', 'UserProfileController@updatePassword');
     Route::get('/profile/updateEmail', 'UserProfileController@showUpdateEmail');
     Route::post('/profile/updateEmail', 'UserProfileController@updateEmail');
+    // 線上報名
+    Route::resource('registration/onlineRegister', 'OnlineRegisterController');
 });

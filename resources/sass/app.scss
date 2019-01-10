@@ -20,6 +20,10 @@ body {
     font-family: $font-family-sans-serif !important;
 }
 
+.navbar {
+    z-index: 999;
+}
+
 .nav-item {
     cursor: pointer;
 
