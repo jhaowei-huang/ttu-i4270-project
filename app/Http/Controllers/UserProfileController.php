@@ -100,6 +100,8 @@ class UserProfileController extends Controller
             ], 422);
         }
 
+        Auth::logout();
+
         $user->password = Hash::make($request->get('password'));
         $user->save();
 
@@ -146,6 +148,8 @@ class UserProfileController extends Controller
             'email' => $user->email,
             'token' => (string)$user->userVerification->token
         ]));
+
+        Auth::logout();
 
         app('db')->table('sessions')
             ->where('user_id', $user->user_id)->delete();
