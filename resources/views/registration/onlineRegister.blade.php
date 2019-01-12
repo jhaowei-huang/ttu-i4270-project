@@ -23,10 +23,11 @@
         <div id="step1" class="step">
             <div class="row mt-5 ml-2 mb-3">請勾選欲報名的場次：</div>
             <div class="table-responsive">
-                <table class="table table-sm table-striped  table-bordered">
+                <table class="table table-sm table-striped table-bordered">
                     <thead class="thead-light">
                     <tr>
-                        <th class="column-checkBox">勾選</th>
+                        <th class="column-select">全選</th>
+                        <th class="column-index">編號</th>
                         <th class="column-date">日期</th>
                         <th class="column-time">時間</th>
                         <th class="column-agenda">議程</th>
@@ -35,14 +36,15 @@
                     </thead>
                     <tbody>
                     <tr class="keynote">
-                        <td class="column-checkBox">
+                        <td class="column-select">
                             <label class="switch mr-2">
-                                <input type="checkbox" class="checkBox">
+                                <input type="checkbox" class="select">
                                 <span class="slider"></span>
                             </label>
                         </td>
-                        <td class="column-date"></td>
-                        <td class="column-time"></td>
+                        <td class="column-index text-center"></td>
+                        <td class="column-date text-center"></td>
+                        <td class="column-time text-center"></td>
                         <td class="column-agenda"></td>
                         <td class="column-speaker"></td>
                     </tr>
@@ -52,8 +54,25 @@
         </div>
         <div id="step2" class="step">
             <div class="mt-5 ml-2 mb-3">
-                <p>目前勾選<span id="chosen-keynote-number">0</span>場議程，其中有<span id="chosen-food-number">0</span>場提供餐點</p>
-                <p>請選擇葷食、素食、或不需要</p>
+                <p>目前勾選&nbsp<span id="chosen-keynote-number" class="color-blue">0</span>&nbsp場議程，其中有&nbsp<span
+                        id="chosen-food-number" class="color-red">0</span>&nbsp場提供餐點</p>
+                <p>請選擇<strong class="color-red">葷食</strong>、<strong class="color-green">素食</strong>、或<strong class="color-blue">不需要</strong></p>
+                <table class="table table-sm table-striped table-bordered">
+                    <thead class="thead-light">
+                    <tr>
+                        <th class="column-select">供餐</th>
+                        <th class="column-index">編號</th>
+                        <th class="column-date">日期</th>
+                        <th class="column-time">時間</th>
+                        <th class="column-agenda">議程</th>
+                        <th class="column-speaker">演講者</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="keynote-food">
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div id="step3" class="step">

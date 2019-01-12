@@ -51,13 +51,26 @@ input:checked + .slider:before {
     transform: translateX(1rem);
 }
 
+table.table-bordered > tbody > tr > td {
+    border-width: 0.1rem;
+}
+
 table {
     table-layout: auto;
     font-size: $font-size-smaller;
+    cursor: pointer;
 
-    tr {
-        th.column-checkBox {
-            width: 4rem;
+    thead tr {
+        th {
+            text-align: center;
+        }
+
+        th.column-select {
+            width: 5rem;
+        }
+
+        th.column-index {
+            width: 2.5rem;
         }
 
         th.column-date {
@@ -65,7 +78,7 @@ table {
         }
 
         th.column-time {
-            width: 6rem;
+            width: 5.5rem;
         }
 
         th.column-agenda {
@@ -73,9 +86,23 @@ table {
         }
 
         th.column-speaker {
-           min-width: 25rem;
+            min-width: 30rem;
         }
     }
+
+    tbody tr {
+        td {
+            vertical-align: middle !important;
+        }
+    }
+
+    td.column-select {
+        text-align: center;
+    }
+}
+
+#step1 table td.column-select {
+    padding-top: 1rem;
 }
 
 .indicator {
