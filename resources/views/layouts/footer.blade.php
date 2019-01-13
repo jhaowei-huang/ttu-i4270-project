@@ -6,10 +6,10 @@
     <div class="row justify-content-center">
         <p class="col-12 col-md-auto text-center">&copy; 大同大學軟體服務設計的創新實務第13組</p>
         <div class="col-auto">
-            <a href="https://gitlab.com/jhaoweihuang/ttu-i4270-group13"><i class="fab fa-gitlab"></i>gitlab</a>
+            <a href="https://gitlab.com/jhaoweihuang/ttu-i4270-project"><i class="fab fa-gitlab"></i>gitlab</a>
         </div>
         <div class="col-auto">
-            <a href="https://github.com/jhaowei-huang/ttu-i4270-group13"><i class="fab fa-github"></i>github</a>
+            <a href="https://github.com/jhaowei-huang/ttu-i4270-project"><i class="fab fa-github"></i>github</a>
         </div>
     </div>
     <div class="row my-3 my-md-0 mx-3 justify-content-center">
