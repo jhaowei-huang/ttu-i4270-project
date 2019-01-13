@@ -56,8 +56,8 @@ table.table-bordered > tbody > tr > td {
 }
 
 table {
-    table-layout: auto;
-    font-size: $font-size-smaller;
+    table-layout: fixed;
+    font-size: $font-size-small;
     cursor: pointer;
 
     thead tr {
@@ -67,26 +67,40 @@ table {
 
         th.column-select {
             width: 5rem;
+
+            @include screen(mobile) {
+                width: 4.5rem;
+            }
         }
 
         th.column-index {
             width: 2.5rem;
+
+            @include screen(mobile) {
+                width: 3rem;
+            }
         }
 
         th.column-date {
-            width: 4rem;
+            width: 3.5rem;
         }
 
         th.column-time {
-            width: 5.5rem;
+            width: 5.0rem;
         }
 
         th.column-agenda {
             min-width: 20rem;
+            @include screen(mobile) {
+                width: 20rem;
+            }
         }
 
         th.column-speaker {
             min-width: 30rem;
+            @include screen(mobile) {
+                width: 30rem;
+            }
         }
     }
 
@@ -103,6 +117,11 @@ table {
 
 #step1 table td.column-select {
     padding-top: 1rem;
+}
+
+.table-confirm {
+    width: 90vw;
+
 }
 
 .indicator {

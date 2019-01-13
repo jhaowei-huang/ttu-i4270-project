@@ -1,4 +1,4 @@
-var data = {
+let data = {
     'keynote-1': {
         'index': 1,
         'date': '9/26(三)',
@@ -100,23 +100,58 @@ var data = {
     }
 };
 
-var list = {};
+let foodList = {
+    0: {
+        'name': '不需要',
+        'class': 'btn btn-outline-primary btn-sm',
+    },
+    1: {
+        'name': '葷食',
+        'class': 'btn btn-outline-danger btn-sm',
+    },
+    2: {
+        'name': '素食',
+        'class': 'btn btn-outline-success btn-sm',
+    },
+};
 
-$(document).ready(function () {
-    // $('.close').on('click', function () {
-    //     auth.waiting(false);
-    // });
-    //
-    // $('#form-').on('submit', function (e) {
-    //     // 停用預設的遞送表單，預設的會導致頁面刷新
-    //     e.preventDefault();
-    //     // disabled的欄位無法使用jquery serialize函式，故需要先儲存表單資訊
-    //     let data = $('#form-updatePassword').serialize();
-    //     auth.waiting();
-    //     // 使用ajax遞送表單，避免頁面刷新
-    //     auth.ajax('POST', '/profile/updatePassword', data);
-    // });
+let list = {};
+let confirmList = {};
+let total = 0;
+let food = 0;
 
+function selectKeynote(e) {
+    let checkBox = $(e.target);
+    let domId = checkBox.parents('.keynote').attr('id').replace('step1', 'step2');
+    let id = domId.replace('step2-', '');
+
+    if (checkBox.is(':checked')) {
+        list[data[id]['index']] = checkBox.parents('.keynote').clone();
+        list[data[id]['index']].attr('id', domId);
+        data[id]['checked'] = true;
+        total += 1;
+        food += data[id]['food'] ? 1 : 0;
+
+        confirmList[data[id]['index']] = list[data[id]['index']].clone();
+    } else {
+        list[data[id]['index']].remove();
+        delete list[data[id]['index']];
+        data[id]['checked'] = false;
+        total += -1;
+        food += data[id]['food'] ? -1 : 0;
+
+        confirmList[data[id]['index']].remove();
+        delete confirmList[data[id]['index']];
+    }
+
+    $('.chosen-keynote-number').text(total);
+    $('.chosen-food-number').text(food);
+
+    refreshKeynoteFood();
+    refreshKeynoteConfirm();
+}
+
+function refreshKeynote() {
     let root = $('.keynote');
     let rows = {};
     for (let i = 0; i < 11; i++) {
@@ -132,7 +167,97 @@ $(document).ready(function () {
         row.insertBefore(root);
     }
     root.remove();
+}
 
+function refreshKeynoteFood() {
+    let root = $('.keynote-food');
+    for (let k = 1; k <= 11; k++) {
+        if (list[k] != null) {
+            list[k].insertBefore(root);
+            if (data['keynote-' + k]['food']) {
+                if (data['keynote-' + k]['foodChosen'] === undefined) {
+                    data['keynote-' + k]['foodChosen'] = 0;
+                }
+
+                list[k].find('.column-select').html("<button id=\"" +
+                    'btn-foodChosen-keynote-' + k + "\" type=\"button\">" + foodList[data['keynote-' + k]['foodChosen']]['name'] + "</button>");
+
+                let target = $('#' + 'btn-foodChosen-keynote-' + k);
+
+                target.removeClass().addClass(foodList[data['keynote-' + k]['foodChosen']]['class']).on('click', function (e) {
+                    data['keynote-' + k]['foodChosen'] += 1;
+                    data['keynote-' + k]['foodChosen'] %= 3;
+                    let v = data['keynote-' + k]['foodChosen'];
+                    if (v === 0) {
+                        // 不需要
+                        target.text('不需要');
+                        target.removeClass();
+                        target.addClass('btn btn-outline-primary btn-sm');
+                    } else if (v === 1) {
+                        // 葷食
+                        target.text('葷食');
+                        target.removeClass();
+                        target.addClass('btn btn-outline-danger btn-sm');
+                    } else if (v === 2) {
+                        // 素食
+                        target.text('素食');
+                        target.removeClass();
+                        target.addClass('btn btn-outline-success btn-sm');
+                    }
+
+                    refreshKeynoteConfirm();
+                });
+            } else {
+                list[k].find('.column-select').html('不提供');
+            }
+        }
+    }
+}
+
+function refreshKeynoteConfirm() {
+    let root = $('.keynote-confirm');
+    for (let k = 1; k <= 11; k++) {
+        if (confirmList[k] != null) {
+            confirmList[k].insertBefore(root);
+            if (data['keynote-' + k]['food']) {
+                let v = data['keynote-' + k]['foodChosen'];
+                let text = '';
+                let color = '';
+                if (v === 0) {
+                    // 不需要
+                    text = '不需要';
+                    color = '#1d68a7';
+                } else if (v === 1) {
+                    // 葷食
+                    text = '葷食';
+                    color = '#e3342f';
+                } else if (v === 2) {
+                    // 素食
+                    text = '素食';
+                    color = '#2d995b';
+                }
+                confirmList[k].find('.column-select').html(text).css('color', color);
+            } else {
+                confirmList[k].find('.column-select').html('X');
+            }
+        }
+    }
+}
+
+$(document).ready(function () {
+    // $('.close').on('click', function () {
+    //     auth.waiting(false);
+    // });
+    //
+    // $('#form-').on('submit', function (e) {
+    //     // 停用預設的遞送表單，預設的會導致頁面刷新
+    //     e.preventDefault();
+    //     // disabled的欄位無法使用jquery serialize函式，故需要先儲存表單資訊
+    //     let data = $('#form-updatePassword').serialize();
+    //     auth.waiting();
+    //     // 使用ajax遞送表單，避免頁面刷新
+    //     auth.ajax('POST', '/profile/updatePassword', data);
+    // });
     $('.indicator .btn').on('click', function (e) {
         let id = e.target.id;
         $('.indicator .btn').removeClass('active');
@@ -145,61 +270,7 @@ $(document).ready(function () {
 
     $('#btn-step1').trigger('click');
 
-    let total = 0;
-    let food = 0;
+    refreshKeynote();
 
-    $('input.select').on('click', function (e) {
-        let checkBox = $(e.target);
-        let domId = checkBox.parents('.keynote').attr('id').replace('step1', 'step2');
-        let id = domId.replace('step2-', '');
-
-        if (checkBox.is(':checked')) {
-            list[data[id]['index']] = checkBox.parents('.keynote').clone();
-            list[data[id]['index']].attr('id', domId);
-            data[id]['checked'] = true;
-            total += 1;
-            food += data[id]['food'] ? 1 : 0;
-        } else {
-            list[data[id]['index']].remove();
-            delete list[data[id]['index']];
-            data[id]['checked'] = false;
-            total += -1;
-            food += data[id]['food'] ? -1 : 0;
-        }
-
-        $('#chosen-keynote-number').text(total);
-        $('#chosen-food-number').text(food);
-
-        root = $('.keynote-food');
-
-        for (let k = 1; k <= 11; k++) {
-            if (list[k] != null) {
-                list[k].insertBefore(root);
-                if (data['keynote-' + k]['food']) {
-                    list[k].find('.column-select').html("<button id=\"" +
-                        'btn-foodChosen-keynote-' + k + "\"" +
-                        "class=\"btn btn-outline-primary btn-sm\" type=\"button\">\n不需要</button>");
-                    data['keynote-' + k]['foodChosen'] = 0;
-                    $('#' + 'btn-foodChosen-keynote-' + k).on('click', function () {
-                        data['keynote-' + k]['foodChosen'] += 1;
-                        data['keynote-' + k]['foodChosen'] %= 3;
-
-                        let v = data['keynote-' + k]['foodChosen'];
-
-                        if (v === 0) {
-                            // 不需要
-                        } else if (v === 1) {
-                            // 葷食
-                        } else if (v === 2) {
-                            // 素食
-                        }
-                    });
-                } else {
-                    list[k].find('.column-select').html('不提供');
-                }
-
-                console.log();
-            }
-        }
-    });
+    $('input.select').on('click', selectKeynote);
 });
