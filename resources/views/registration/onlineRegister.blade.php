@@ -127,29 +127,29 @@
                         <input type="text" class="form-control" placeholder="姓名" value="黃昭維"
                                disabled>
                     </div>
+                    <div class="row justify-content-center mt-2">
+                        <div class="g-recaptcha"
+                             data-sitekey="{{ config('app.google_recaptcha_key') }}"></div>
+                    </div>
+                    <div class="alert alert-primary row justify-content-center align-content-between mt-2">
+                        <button type="button" class="close col-md-4" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <i class="fas fa-cog fa-spin fa-2x loading-icon"></i>
+                        <span class="validation-area text-center mt-1"></span>
+                    </div>
                 </div>
             </div>
-            <div class="row justify-content-center mt-n1 mb-n4">
-                <div class="g-recaptcha"
-                     data-sitekey="{{ config('app.google_recaptcha_key') }}"></div>
-            </div>
-            <div class="alert alert-primary row justify-content-center align-content-between">
-                <button type="button" class="close" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <i class="fas fa-cog fa-spin fa-2x loading-icon"></i>
-                <span class="validation-area text-center mt-1"></span>
-            </div>
         </div>
-        <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center mt-2">
             <div id="btn-previous" class="btn btn-lg btn-outline-secondary mr-1">
                 上一步
             </div>
             <div id="btn-next" class="btn btn-lg btn-outline-success ml-1">
                 下一步
             </div>
-            <button type="submit" class="btn btn-outline-primary ml-1"
-                    id="btn-submit" name="btn-submit">報名
+            <button class="btn btn-outline-primary ml-1"
+                    id="btn-submit">報名
             </button>
         </div>
     </div>

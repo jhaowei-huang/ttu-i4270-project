@@ -303,20 +303,38 @@ function selectAll(e) {
     });
 }
 
+function dataSerialize() {
+    let serialize = {'keynote': {}};
+    serialize['g-recaptcha-response'] = $('#g-recaptcha-response').val();
+    let keynote = serialize['keynote'];
+    for (let k = 1; k <= 11; k++) {
+        if (confirmList[k] != null) {
+            keynote[k] = {};
+            keynote[k]['checked'] = true;
+            keynote[k]['food'] = data['keynote-' + k]['foodChosen'];
+        }
+    }
+    return serialize;
+}
+
 $(document).ready(function () {
-    // $('.close').on('click', function () {
-    //     auth.waiting(false);
-    // });
-    //
-    // $('#form-').on('submit', function (e) {
-    //     // 停用預設的遞送表單，預設的會導致頁面刷新
-    //     e.preventDefault();
-    //     // disabled的欄位無法使用jquery serialize函式，故需要先儲存表單資訊
-    //     let data = $('#form-updatePassword').serialize();
-    //     auth.waiting();
-    //     // 使用ajax遞送表單，避免頁面刷新
-    //     auth.ajax('POST', '/profile/updatePassword', data);
-    // });
+    $('.close').on('click', function () {
+        auth.waiting(false);
+    });
+
+    $('#btn-submit').on('click', function (e) {
+        // 停用預設的遞送表單，預設的會導致頁面刷新
+        e.preventDefault();
+        // disabled的欄位無法使用jquery serialize函式，故需要先儲存表單資訊
+        let data = dataSerialize();
+        auth.waiting();
+        console.log(data);
+
+        if(data['g-recaptcha-response'] === undefined || data['keynote'] === undefined)
+            console.log('empty');
+        // 使用ajax遞送表單，避免頁面刷新
+        auth.ajax('POST', '/registration/onlineRegister', data);
+    });
     // 點選頁面轉換
     $('.indicator .btn').on('click', step);
     // 預設從第一步開始

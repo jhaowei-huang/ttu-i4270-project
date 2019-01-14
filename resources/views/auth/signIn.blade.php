@@ -11,9 +11,7 @@
                 <h3 class="text-center mb-3">登入會員</h3>
                 @if(Session::has('message'))
                     <div
-                        class="alert alert-info alert-fixed row justify-content-center align-content-between"
-                        role="alert">
-                        <i class="fas fa-check-circle fa-fw fa-2x"></i>
+                        class="alert alert-info alert-fixed row justify-content-center align-content-between">
                         <span
                             class="text-center mt-1">{{ Session::pull('message') }}</span>
                     </div>

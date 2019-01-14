@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Model\PasswordReset', 'user_id', 'user_id');
     }
+
+    public function registrations()
+    {
+        return $this->hasMany('App\Model\Registration', 'user_id', 'user_id');
+    }
 }
