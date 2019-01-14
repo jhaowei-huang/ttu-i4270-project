@@ -26,16 +26,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                {{--@foreach(Auth::user()->registrations)--}}
-                    {{--<tr class="keynote">--}}
-                        {{--<th class="column-select">供餐</th>--}}
-                        {{--<th class="column-index">編號</th>--}}
-                        {{--<th class="column-date">日期</th>--}}
-                        {{--<th class="column-time">時間</th>--}}
-                        {{--<th class="column-agenda">議程</th>--}}
-                        {{--<th class="column-speaker">演講者</th>--}}
-                    {{--</tr>--}}
-                {{--@endforeach--}}
+                @foreach($keynotes as $keynote)
+                    <tr class="keynote">
+                        <th class="column-select">{{ $keynote['food'] }}</th>
+                        <th class="column-index">{{ $keynote['index'] }}</th>
+                        <th class="column-date">{{ $keynote['date'] }}</th>
+                        <th class="column-time">{{ $keynote['time'] }}</th>
+                        <th class="column-agenda">{{ $keynote['agenda'] }}</th>
+                        <th class="column-speaker">{{ $keynote['speaker'] }}</th>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

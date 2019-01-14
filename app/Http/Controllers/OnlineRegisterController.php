@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RegisterKeynotePost;
 use App\Model\Registration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class OnlineRegisterController extends Controller
@@ -60,7 +61,7 @@ class OnlineRegisterController extends Controller
         }
 
         session(['message' => '報名成功！']);
-        return response()->json(['redirect' => '/registration/onlineRegister']);
+        return response()->json(['redirect' => '/registration/onlineRegister/result']);
     }
 
     /**
@@ -71,7 +72,23 @@ class OnlineRegisterController extends Controller
      */
     public function show($id)
     {
-        return view('registration.result');
+        $user = Auth::user();
+        $registrations = Registration::where('user_id', $user->user_id)
+            ->orderBy('keynote_id', 'asc')->get();
+        $keynotes = [];
+        foreach ($registrations as $registration) {
+            $keynote = $registration->keynote;
+            array_push($keynotes, [
+                'food' => isset($registration->food) ? $registration->food : '不提供',
+                'index' => $registration->keynote_id,
+                'date' => $keynote->date,
+                'time' => $keynote->start_time . '~' . $keynote->end_time,
+                'agenda' => $keynote->agenda,
+                'speaker' => $keynote->speaker,
+            ]);
+        }
+
+        return view('registration.result', ['keynotes' => $keynotes]);
     }
 
     /**
