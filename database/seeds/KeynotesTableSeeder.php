@@ -20,9 +20,9 @@ class KeynotesTableSeeder extends Seeder
             $key = 'keynote-' . $i;
             DB::table('keynotes')->insert([
                 'keynote_id' => $json[$key]['index'],
-                'date' => new Carbon($json[$key]['date']),
-                'start_time' => new Carbon($json[$key]['start_time']),
-                'end_time' => new Carbon($json[$key]['end_time']),
+                'date' => $json[$key]['date'],
+                'start_time' => $json[$key]['start_time'],
+                'end_time' => $json[$key]['end_time'],
                 'agenda' => $json[$key]['agenda'],
                 'speaker' => $json[$key]['speaker'],
                 'food' => $json[$key]['food']
