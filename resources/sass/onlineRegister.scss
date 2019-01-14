@@ -55,6 +55,10 @@ table.table-bordered > tbody > tr > td {
     border-width: 0.1rem;
 }
 
+#btn-selectAll, #btn-cancelAll {
+    font-size: $font-size-base !important;
+}
+
 table {
     table-layout: fixed;
     font-size: $font-size-small;
@@ -119,10 +123,10 @@ table {
     padding-top: 1rem;
 }
 
-.table-confirm {
-    width: 90vw;
-
-}
+//
+//.table-confirm {
+//    width: 90vw;
+//}
 
 .indicator {
     background-color: $body-bg;

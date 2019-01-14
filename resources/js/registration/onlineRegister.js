@@ -147,6 +147,7 @@ function selectKeynote(e) {
     $('.chosen-keynote-number').text(total);
     $('.chosen-food-number').text(food);
 
+    // 刷新第二頁與第三頁
     refreshKeynoteFood();
     refreshKeynoteConfirm();
 }
@@ -244,6 +245,64 @@ function refreshKeynoteConfirm() {
     }
 }
 
+function step(e) {
+    let id = e.target.id;
+    $('.indicator .btn').removeClass('active');
+    $('#' + id).addClass('active');
+
+    let tab_id = id.replace('btn-', '');
+    $('.step').css('display', 'none');
+    $('#' + tab_id).css('display', 'block');
+
+    if (id === 'btn-step1') {
+        $('#btn-previous').css('display', 'none');
+        $('#btn-next').css('display', 'block');
+        $('#btn-submit').css('display', 'none');
+    } else if (id === 'btn-step3') {
+        $('#btn-previous').css('display', 'block');
+        $('#btn-next').css('display', 'none');
+        $('#btn-submit').css('display', 'block');
+    } else {
+        $('#btn-previous').css('display', 'block');
+        $('#btn-next').css('display', 'block');
+        $('#btn-submit').css('display', 'none');
+    }
+}
+
+function nextOrPreOrSubmit(e) {
+    let step = parseInt($('.indicator .btn.active').attr('id').replace('btn-step', ''));
+
+    if (e.target.id === 'btn-next') {
+        step += 1;
+
+    } else if (e.target.id === 'btn-previous') {
+        step -= 1;
+    }
+
+    let target = $('#btn-step' + step);
+    if (target !== undefined) {
+        target.trigger('click');
+    }
+}
+
+function selectAll(e) {
+    let id = e.target.id;
+    let targets = $('.column-select .switch input.select');
+    let onOff;
+    if (id === 'btn-selectAll') {
+        onOff = false;
+        $(e.target).attr('id', 'btn-cancelAll').text('取消').removeClass().addClass('color-red');
+    } else if (id === 'btn-cancelAll') {
+        onOff = true;
+        $(e.target).attr('id', 'btn-selectAll').text('全選').removeClass().addClass('color-green');
+    }
+    targets.each(function () {
+        let target = $(this);
+        if (target.prop('checked') === onOff)
+            target.trigger('click');
+    });
+}
+
 $(document).ready(function () {
     // $('.close').on('click', function () {
     //     auth.waiting(false);
@@ -258,19 +317,16 @@ $(document).ready(function () {
     //     // 使用ajax遞送表單，避免頁面刷新
     //     auth.ajax('POST', '/profile/updatePassword', data);
     // });
-    $('.indicator .btn').on('click', function (e) {
-        let id = e.target.id;
-        $('.indicator .btn').removeClass('active');
-        $('#' + id).addClass('active');
-
-        let tab_id = id.replace('btn-', '');
-        $('.step').css('display', 'none');
-        $('#' + tab_id).css('display', 'block');
-    });
-
+    // 點選頁面轉換
+    $('.indicator .btn').on('click', step);
+    // 預設從第一步開始
     $('#btn-step1').trigger('click');
-
+    // 刷新第一頁
     refreshKeynote();
-
+    // 當有勾選或取消
     $('input.select').on('click', selectKeynote);
+    // 點選下一步、上一步頁面轉換與送出報名表單
+    $('#btn-next, #btn-previous').on('click', nextOrPreOrSubmit);
+    // 全選或取消
+    $('#btn-selectAll, #btn-cancelAll').on('click', selectAll);
 });
