@@ -25,6 +25,7 @@ class KeynotesTableSeeder extends Seeder
                 'end_time' => $json[$key]['end_time'],
                 'agenda' => $json[$key]['agenda'],
                 'speaker' => $json[$key]['speaker'],
+                'position' => $json[$key]['position'],
                 'food' => $json[$key]['food']
             ]);
         }

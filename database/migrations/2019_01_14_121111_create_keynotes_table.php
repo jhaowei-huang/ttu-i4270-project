@@ -23,6 +23,7 @@ class CreateKeynotesTable extends Migration
             $table->string('end_time');
             $table->string('agenda');
             $table->string('speaker');
+            $table->string('position');
             $table->boolean('food');
             $table->timestamps();
         });

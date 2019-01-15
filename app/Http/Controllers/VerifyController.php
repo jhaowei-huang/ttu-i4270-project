@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ResendEmailPost;
 use App\Mail\VerificationEmail;
 use App\Model\UserVerification;
-use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use mysql_xdevapi\Session;
 use Webpatser\Uuid\Uuid;
 
 class VerifyController extends Controller

@@ -22,6 +22,18 @@ class OnlineRegisterController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        $registrations = Registration::where('user_id', $user->user_id)
+            ->orderBy('keynote_id', 'asc')->get();
+        $keynotes = [];
+        foreach ($registrations as $registration) {
+            $keynote = $registration->keynote;
+            array_push($keynotes, [
+                'food' => isset($registration->food) ? $registration->food : '不提供',
+                'index' => $registration->keynote_id,
+            ]);
+        }
+
         return view('registration.onlineRegister');
     }
 
@@ -45,6 +57,7 @@ class OnlineRegisterController extends Controller
     {
         $user = Auth::user();
         $keynote = $request->get('keynote');
+        $food = config('enums.food');
 
         for ($i = 1; $i <= 11; $i++) {
             if (isset($keynote[$i])) {
@@ -52,7 +65,7 @@ class OnlineRegisterController extends Controller
                     'keynote_id' => $i,
                     'user_id' => (string)$user->user_id,
                 ], [
-                    'food' => isset($keynote[$i]['food']) ? $keynote[$i]['food'] : null
+                    'food' => isset($keynote[$i]['food']) ? $food[$keynote[$i]['food']] : null
                 ]);
             } else {
                 Registration::where(

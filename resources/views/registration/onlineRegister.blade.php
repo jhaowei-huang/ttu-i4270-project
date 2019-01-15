@@ -110,21 +110,21 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-user fa-fw"></i>帳號</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="帳號" value="123"
+                        <input type="text" class="form-control" placeholder="帳號" value="{{ Auth::user()->username }}"
                                disabled>
                     </div>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-at fa-fw"></i>信箱</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="email" value="123@gmail.com"
+                        <input type="text" class="form-control" placeholder="email" value="{{ Auth::user()->email }}"
                                disabled>
                     </div>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-font fa-fw"></i>姓名</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="姓名" value="黃昭維"
+                        <input type="text" class="form-control" placeholder="姓名" value="{{ Auth::user()->name }}"
                                disabled>
                     </div>
                     <div class="row justify-content-center mt-2">
