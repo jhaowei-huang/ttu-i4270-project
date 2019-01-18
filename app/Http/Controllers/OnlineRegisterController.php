@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterKeynotePost;
+use App\Mail\RegistrationEmail;
 use App\Model\Registration;
+use App\Model\RegistrationCode;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Webpatser\Uuid\Uuid;
 
 class OnlineRegisterController extends Controller
 {
@@ -58,23 +62,54 @@ class OnlineRegisterController extends Controller
         $user = Auth::user();
         $keynote = $request->get('keynote');
         $food = config('enums.food');
+        $counts = 0;
+        $json = ['user_id' => $user->user_id, 'keynotes' => []];
+        $code = null;
 
         for ($i = 1; $i <= 11; $i++) {
             if (isset($keynote[$i])) {
-                Registration::updateOrCreate([
+                $record = Registration::updateOrCreate([
                     'keynote_id' => $i,
                     'user_id' => (string)$user->user_id,
                 ], [
                     'food' => isset($keynote[$i]['food']) ? $food[$keynote[$i]['food']] : null
                 ]);
+
+                array_push($json['keynotes'], ['keynote_id' => $record->keynote_id, 'food' => $record->food]);
+                $counts++;
             } else {
-                Registration::where(
-                    ['keynote_id' => $i, 'user_id' => (string)$user->user_id])->delete();
+                Registration::where(['keynote_id' => $i, 'user_id' => (string)$user->user_id])->delete();
             }
         }
 
-        session(['message' => '報名成功！']);
-        return response()->json(['redirect' => '/registration/onlineRegister/result']);
+        if ($counts != 0) {
+            $code = QrCode::format('svg')->encoding('UTF-8')->size(50)->generate(serialize($json));
+            RegistrationCode::updateOrCreate([
+                'user_id' => (string)$user->user_id,
+            ], [
+                'registration_code_id' => Uuid::generate(4),
+                'data' => $code
+            ]);
+        } else {
+            RegistrationCode::where(['user_id' => (string)$user->user_id])->delete();
+        }
+
+        Mail::to($user->email)->send(new RegistrationEmail([
+            'user_id' => (string)$user->user_id,
+            'username' => $user->username,
+            'name' => $user->name,
+            'email' => $user->email,
+            'code' => (string)$code,
+        ]));
+
+        session([
+            'message' => '報名成功，已寄送含有報名條碼的信件至您的信箱',
+            'code' => $code
+        ]);
+
+        return response()->json([
+            'redirect' => '/registration/onlineRegister/result',
+        ]);
     }
 
     /**
@@ -98,6 +133,7 @@ class OnlineRegisterController extends Controller
                 'time' => $keynote->start_time . '~' . $keynote->end_time,
                 'agenda' => $keynote->agenda,
                 'speaker' => $keynote->speaker,
+                'position' => $keynote->position,
             ]);
         }
 

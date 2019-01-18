@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Model\Registration', 'user_id', 'user_id');
     }
+
+    public function registrationCodes()
+    {
+        return $this->hasOne('App\Model\RegistrationCode', 'user_id', 'user_id');
+    }
 }

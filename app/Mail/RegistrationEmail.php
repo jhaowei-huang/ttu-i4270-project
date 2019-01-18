@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ResetPasswordEmail extends Mailable implements ShouldQueue
+class RegistrationEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -25,7 +25,8 @@ class ResetPasswordEmail extends Mailable implements ShouldQueue
             'username' => $data['username'],
             'email' => $data['email'],
             'name' => $data['name'],
-            'token' => $data['token'],
+            'code' => $data['code'],
+//            'data' => $data['data'],
         ];
     }
 
@@ -36,8 +37,8 @@ class ResetPasswordEmail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->view('emails.resetPasswordEmail')
-            ->subject(config('app.email_subject.resetPassword'))
+        return $this->view('emails.registrationEmail')
+            ->subject(config('app.email_subject.registration'))
             ->with(['user' => $this->user]);
     }
 }

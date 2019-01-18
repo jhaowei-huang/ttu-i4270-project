@@ -1,4 +1,4 @@
-@extends('layouts.master', ['title' => '線上報名', 'current' => 'registration'])
+@extends('layouts.master', ['title' => '報名結果', 'current' => 'registration'])
 
 @push('styles')
     <link href="{{asset('css/onlineRegister.css')}}" rel="stylesheet">
@@ -12,7 +12,6 @@
                 <span class="text-center mt-1">{{ Session::pull('message') }}</span>
             </div>
         @endif
-
         <div class="table-responsive">
             <table class="table table-sm table-striped table-bordered">
                 <thead class="thead-light">
@@ -26,14 +25,23 @@
                 </tr>
                 </thead>
                 <tbody>
+                @php($food = config('enums.food'))
                 @foreach($keynotes as $keynote)
                     <tr class="keynote">
-                        <th class="column-select">{{ $keynote['food'] }}</th>
-                        <th class="column-index">{{ $keynote['index'] }}</th>
-                        <th class="column-date">{{ $keynote['date'] }}</th>
-                        <th class="column-time">{{ $keynote['time'] }}</th>
-                        <th class="column-agenda">{{ $keynote['agenda'] }}</th>
-                        <th class="column-speaker">{{ $keynote['speaker'] }}</th>
+                        @if($keynote['food'] === $food[0])
+                            <td class="column-select text-center color-blue">{{ $keynote['food'] }}</td>
+                        @elseif($keynote['food'] === $food[1])
+                            <td class="column-select text-center color-red">{{ $keynote['food'] }}</td>
+                        @elseif($keynote['food'] === $food[2])
+                            <td class="column-select text-center color-green">{{ $keynote['food'] }}</td>
+                        @else
+                            <td class="column-select text-center">{{ $keynote['food'] }}</td>
+                        @endif
+                        <td class="column-index text-center">{{ $keynote['index'] }}</td>
+                        <td class="column-date text-center">{{ $keynote['date'] }}</td>
+                        <td class="column-time text-center">{{ $keynote['time'] }}</td>
+                        <td class="column-agenda">{{ $keynote['agenda'] }}</td>
+                        <td class="column-speaker">{{ $keynote['speaker'] }}<br>{{ $keynote['position'] }}</td>
                     </tr>
                 @endforeach
                 </tbody>

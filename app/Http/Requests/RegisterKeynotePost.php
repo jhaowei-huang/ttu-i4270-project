@@ -26,7 +26,7 @@ class RegisterKeynotePost extends FormRequest
     public function rules()
     {
         return [
-            'g-recaptcha-response' => [new Captcha()],
+//            'g-recaptcha-response' => [new Captcha()],
         ];
     }
 }

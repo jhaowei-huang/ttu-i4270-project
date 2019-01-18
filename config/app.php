@@ -231,6 +231,7 @@ return [
     'email_expired_time' => env('EMAIL_EXPIRED_TIME', 10),
     'email_subject' => [
         'verification' => '帳號email驗證',
-        'resetPassword' => '重設密碼'
+        'resetPassword' => '重設密碼',
+        'registration' => '報名QRcode'
     ],
 ];
