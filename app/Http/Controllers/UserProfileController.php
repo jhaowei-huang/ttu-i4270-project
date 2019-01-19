@@ -100,15 +100,15 @@ class UserProfileController extends Controller
             ], 422);
         }
 
-        Auth::logout();
-
-        $user->password = Hash::make($request->get('password'));
+        $user->password = Hash::make($request->get('new_password'));
         $user->save();
+
+        Auth::logout();
 
         app('db')->table('sessions')
             ->where('user_id', $user->user_id)->delete();
 
-        session(['message' => '密碼修改成功']);
+        Session::flash('message', '密碼修改成功');
 
         return response()->json([
             'redirect' => '/signIn',
